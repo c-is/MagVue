@@ -1,0 +1,46 @@
+{
+  "title": "Jigen 次元 ー Studio",
+  "email": "hello@jigen.design",
+  "url": "https://jigen.design",
+  "description" : "Jigen 次元 ー Studio | VFX & 3D CGI Studio | Glitchy visuals and social responsibility",
+  "author": "jigen.design",
+  "keywords": "jigen, jigen studio, jigen design, industrial design, 3D design, portfolio, visual effects, vfx, 3D, design, Tokyo, CGI, cgi, character design, character, modeling, game design, game effects, Houdini artist, Houdini fx, rigging, rig, fire shader, fire simulation, flame simulation, smoke simulation, liquid simulation",
+  "postSize": 9,
+  "messages": {
+    "error": "Error has occurred so fuck off.",
+    "requirement": "Please fill the required input."
+  },
+  "benchmark": "494C7857-B6E3-4A91-9B90-79DD0AE46A88",
+  "accounts": [
+    {
+      "name": "facebook",
+      "iconPath": "fb.svg",
+      "link": "https://www.facebook.com/jigenstudio"
+    },
+    {
+      "name": "instagram",
+      "iconPath": "insta.svg",
+      "link": "https://www.instagram.com/jigen.studio/"
+    },
+    {
+      "name": "artstation",
+      "iconPath": "artstation.svg",
+      "link": "https://www.artstation.com/jigen_studio"
+    },
+    {
+      "name": "behance",
+      "iconPath": "be.svg",
+      "link": "https://www.behance.net/jigenstudio"
+    },
+    {
+      "name": "vimeo",
+      "iconPath": "vimeo.svg",
+      "link": "https://vimeo.com/jigenstudio"
+    },
+    {
+      "name": "linkedin",
+      "iconPath": "linkedin.svg",
+      "link": "https://www.linkedin.com/in/jigen-studio/"
+    }
+  ]
+}

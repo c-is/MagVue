@@ -1,0 +1,139 @@
+{
+  "baseUrl": ".",
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    // "allowJs": true,
+    "noEmitOnError": true,
+    "importHelpers": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    // "typeRoots": ["node_modules/@types"],
+    "baseUrl": ".",
+    "types": [
+      "@types/node",
+      "@nuxt/vue-app",
+      "@nuxt/content"
+    ],
+    "lib": [
+      "esnext",
+      "esnext.asynciterable",
+      "dom",
+      // "dom.iterable",
+      // "scripthost"
+    ],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "~/*": [
+        "src/*"
+      ],
+      "@app/actions/*": [
+        "src/actions/*"
+      ],
+      "@app/actions": [
+        "src/actions/index.ts",
+        "src/actions/index.json",
+        "src/actions/index.vue",
+        "src/actions/index.css"
+      ],
+      "@app/components/*": [
+        "src/components/*"
+      ],
+      "@app/components": [
+        "src/components/index.ts",
+        "src/components/index.json",
+        "src/components/index.vue",
+        "src/components/index.css"
+      ],
+      "@app/constants/*": [
+        "src/constants/*"
+      ],
+      "@app/constants": [
+        "src/constants/index.ts",
+        "src/constants/index.json",
+        "src/constants/index.vue",
+        "src/constants/index.css"
+      ],
+      "@app/reducers/*": [
+        "src/reducers/*"
+      ],
+      "@app/reducers": [
+        "src/reducers/index.ts",
+        "src/reducers/index.json",
+        "src/reducers/index.vue",
+        "src/reducers/index.css"
+      ],
+      "@app/types/*": [
+        "src/types/*"
+      ],
+      "@app/types": [
+        "src/types/index.ts",
+        "src/types/index.json",
+        "src/types/index.vue",
+        "src/types/index.css"
+      ],
+      "@app/utils/*": [
+        "src/utils/*"
+      ],
+      "@app/utils": [
+        "src/utils/index.ts",
+        "src/utils/index.json",
+        "src/utils/index.vue",
+        "src/utils/index.css"
+      ],
+      "@app/layouts/*": [
+        "src/layouts/*"
+      ],
+      "@app/layouts": [
+        "src/layouts/index.ts",
+        "src/layouts/index.json",
+        "src/layouts/index.vue",
+        "src/layouts/index.css"
+      ],
+      "@app/pages/*": [
+        "src/pages/*"
+      ],
+      "@app/pages": [
+        "src/pages/index.ts",
+        "src/pages/index.json",
+        "src/pages/index.vue",
+        "src/pages/index.css"
+      ],
+      "@app/factories/*": [
+        "src/factories/*"
+      ],
+      "@app/factories": [
+        "src/factories/index.ts",
+        "src/factories/index.json",
+        "src/factories/index.vue",
+        "src/factories/index.css"
+      ],
+      "@app/theme": [
+        "src/theme.ts"
+      ],
+      "@app/svgs/*": [
+        "src/svgs/*"
+      ],
+      "@app/svgs": [
+        "src/svgs/index.ts",
+        "src/svgs/index.json",
+        "src/svgs/index.vue",
+        "src/svgs/index.css"
+      ],
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.vue"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

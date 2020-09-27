@@ -1,0 +1,12 @@
+<svg width="143" height="176" viewBox="0 0 143 176" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.78743 59.0221C1.56123 59.1805 1.50625 59.4922 1.66464 59.7184L59.0223 141.634C59.1807 141.86 59.4924 141.915 59.7186 141.756L141.634 84.3988C141.86 84.2404 141.915 83.9286 141.757 83.7024L84.399 1.78721C84.2406 1.56101 83.9288 1.50603 83.7026 1.66443L1.78743 59.0221Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.5 30L101 112" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M92.9999 147.5L100.81 112.133" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="2.30364" y="100.499" width="91" height="91" transform="rotate(-35 2.30364 100.499)" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="1.5" y1="59.5" x2="1.5" y2="100.5" stroke="currentColor" stroke-linecap="round"/>
+<line x1="142.302" y1="84.6395" x2="128.64" y2="122.698" stroke="currentColor" stroke-linecap="round"/>
+<path d="M59 142L53.9999 174" stroke="currentColor" stroke-linecap="round"/>
+<line x1="84.409" y1="1.57681" x2="76.5768" y2="47.591" stroke="currentColor" stroke-linecap="round"/>
+<line x1="43.4995" y1="30.0232" x2="41.4995" y2="73.0232" stroke="currentColor"/>
+<line x1="41.4135" y1="72.7188" x2="92.4135" y2="147.719" stroke="currentColor"/>
+</svg>

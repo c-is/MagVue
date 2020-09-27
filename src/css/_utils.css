@@ -1,0 +1,41 @@
+.util {
+  &-control {  
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    width: 20%;
+    height: 40px;
+    color: #000;
+    text-align: center;
+    background-color: #fff;
+
+    input,
+    label { cursor: pointer !important; }
+
+    &__title {
+      margin-right: 12px;
+    }
+  }
+
+  &-grids {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 9999;
+    display: none;
+    justify-content: space-between;
+    width: 940px;
+    height: 100%;
+    margin: auto;
+    &.is-active { display: flex; }
+  }
+
+  &-grid {
+    width: 60px;
+    height: 100%;
+    background-color: #FD6697;
+    opacity: 0.2;
+  }
+}

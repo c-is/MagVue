@@ -1,0 +1,39 @@
+{
+  "navigation": [
+    {
+      "name": "Industrial",
+      "link": "/industrial",
+      "position": "left",
+      "isClosed": false,
+      "isComing": false,
+    },
+    {
+      "name": "VFX & 3D CGI",
+      "link": "/visual",
+      "position": "left",
+      "isClosed": false,
+      "isComing": false
+    },
+    {
+      "name": "Shop",
+      "link": "/shop",
+      "position": "right",
+      "isClosed": true,
+      "isComing": false
+    },
+    {
+      "name": "Blog",
+      "link": "/blog",
+      "position": "right",
+      "isClosed": true,
+      "isComing": false
+    },
+    {
+      "name": "Contact",
+      "link": "/contact",
+      "position": "right",
+      "isClosed": false,
+      "isComing": false
+    }
+  ]
+}

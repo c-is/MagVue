@@ -1,0 +1,38 @@
+{
+  "navigation": {
+    "left": [
+      {
+        "name": "industrial",
+        "label": "Industrial",
+        "link": "/industrial",
+        "isClosed": false
+      },
+      {
+        "name": "visual",
+        "label": "VFX & 3D CGI",
+        "link": "/visual",
+        "isClosed": false
+      }
+    ],
+    "right": [
+      {
+        "name": "shop",
+        "label": "Shop",
+        "link": "/shop",
+        "isClosed": true
+      },
+      {
+        "name": "blog",
+        "label": "Blog",
+        "link": "/blog",
+        "isClosed": false
+      },
+      {
+        "name": "contact",
+        "label": "Contact",
+        "link": "/contact",
+        "isClosed": false
+      }
+    ]
+  }
+}

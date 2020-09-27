@@ -1,0 +1,112 @@
+/* @custom-media --screen-xs-max (max-width: 442px);
+@custom-media --screen-xs-min (min-width: 443px);
+@custom-media --screen-tb-max (max-width: 640px);
+@custom-media --screen-tb-min (min-width: 640px);
+@custom-media --screen-sm-max (max-width: 992px);
+@custom-media --screen-sm-min (min-width: 992px);
+@custom-media --screen-md-max (max-width: 1280px);
+@custom-media --screen-mc-max (max-width: 1440px);
+@custom-media --screen-lg-max (max-width: 1920px); */
+
+:root {
+  /*
+   * Paths
+   * ======================================================================== */
+  --path-image: '/assets/images';
+
+  /*
+   * Layout
+   * ======================================================================== */
+  --content-width: 1280px;
+  --content-max-width: 1440px;
+  --content-space: 2.8rem;
+  --grid-width: 6.2rem;
+  --grid-margin: 1rem;
+  --gutter-space: 1.333rem;
+  --header-height: 6.66666667rem;
+  --space-l: 13.3333333333rem;
+  --space-m: 9.35vw;
+  --space-m-alt: 8.25rem;
+  --space-s: 7.5rem;
+  --space-xs: 4.2rem;
+  --space-head: 1.333333rem;
+  --border-radius: 0.2rem;
+  --gutter-space-tablet: 1.25rem;
+  --grid-width-mobile: 3.75rem;
+  --gutter-space-mobile: 1.42rem;
+  --space-m-mobile: 1.7857rem;
+  --space-l-mobile: 1.64rem;
+  --space-xl-mobile: 5.2rem;
+  --content-space-mobile: 2.6rem;
+  --header-height-mobile: 5.7rem;
+  --content-width-mobile: 375px;
+
+  /*
+   * Typography
+   * ======================================================================== */
+  --font-primary: "Red Hat Display", "Helvetica Neue", "Helvetica", 'Arial', sans-serif;
+  --font-secondary: "Lexend Deca", "Helvetica Neue", "Helvetica", 'Arial', sans-serif;
+  --fsize-xxxl: 6.6666em;
+  --fsize-xxl: 2em;
+  --fsize-xl: 1.6em;
+  --fsize-l: 1.2em;
+  --fsize-s: 0.8em;
+  --fsize-xxl-mobile: 2.85rem;
+  --fsize-xl-mobile: 2.15rem;
+
+  /*
+   * Media queries breakpoints
+   * ======================================================================== */
+  --screen-xs-min: 480px;  /* Extra small screen / phone */
+  --screen-tb-min: 640px;  /* Small screen / tablet vertical */
+  --screen-sm-min: 992px;  /* Small screen / tablet */
+  --screen-md-min: 1280px;  /* Medium screen / desktop */
+  --screen-mc-min: 1440px;  /* Macbook screen / desktop */
+  --screen-lg-min: 1920px; /* Large screen / wide desktop */
+
+  /*
+   * Colours
+   * ======================================================================== */
+
+  /* --colour-font: #272727;
+  --colour-font-contrast: #fff;
+  --colour-primary: #2727ff;
+  --colour-secondary: #00f0ff;
+  --colour-bg: #fff;
+  --colour-bg-secondary: #272727;
+  --colour-icon: #fff; */
+  --colour-primary-difference: #d8d800;
+  --colour-primary-lighten: #33f;
+  --colour-border: #333;
+  --colour-red: #ec4747;
+  --colour-violet: #4200ff;
+
+  /*
+   * Transitions
+   * ======================================================================== */
+  --ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  --ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  --ease-in-quart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  --ease-in-quint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+  --ease-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+  --ease-in-circ: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-out-circ: cubic-bezier(0.075, 0.82, 0.165, 1);
+  --ease-out-sin: cubic-bezier(0.61, 1, 0.88, 1);
+  --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
+  --ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
+  --ease-in-out-circ: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+  /*
+   * shadows
+   * ======================================================================== */
+  --box-shadow: 0 0.33rem 2rem 0 rgba(39, 39, 255, 0.15);
+  --box-shadow-l: 0 0.33rem 2rem 0 rgba(39, 39, 255, 0.35);
+}

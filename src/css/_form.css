@@ -1,0 +1,165 @@
+.form {
+  width: 100%;
+  color: var(--colour-font-contrast);
+
+  &__shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    color: transparent;
+    text-indent: -9999px;
+    box-shadow: 0 0.33rem 2rem 0 var(--colour-primary);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+
+    .form__row--textarea & { height: 10rem; }
+    .form__row--text & { height: 3.33rem; }
+  }
+
+  textarea {
+    height: 10rem;
+    padding: 0.85rem 1rem;
+
+    &:hover + .form__shadow,
+    &:focus + .form__shadow { opacity: 0.35; }
+  }
+
+  input[type="text"],
+  input[type="email"] {
+    height: 3.33rem;
+    padding: 0 1rem;
+    &:hover + .form__shadow { opacity: 0.35; }
+  }
+
+  textarea,
+  input[type="text"],
+  input[type="email"] {
+    width: 100%;
+    color: var(--colour-font-contrast);
+    background-color: transparent;
+    border: 2px solid var(--colour-bg);
+    border-radius: var(--border-radius);
+    outline: none;
+
+    &.is-error {
+      border-color: var(--colour-red);
+    }
+  }
+
+  &__row {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+
+    &--text {
+      margin-bottom: var(--space-head);
+    }
+
+    &--button {
+      margin-top: var(--content-space);
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    &--error {
+      margin-top: var(--space-head);
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+
+  &__progress {
+    position: relative;
+    display: inline-block;
+    width: 15.333rem;
+    height: 4rem;
+    padding: 0;
+    text-align: center;
+
+    svg {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 4rem;
+      height: 4rem;
+      pointer-events: none;
+      transform: translateX(-50%);
+    }
+
+    path {
+      opacity: 0;
+      fill: none;
+    }
+
+    .progress-circle {
+      path {
+        stroke: currentColor;
+        stroke-width: 5;
+      }
+    }
+
+    .checkmark path,
+    .cross path {
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-width: 4;
+      transition: opacity 0.1s;
+    }
+
+    &.is-loading span,
+    &.is-success span,
+    &.is-error span {
+      opacity: 0; /* keep it hidden in all states */
+    }
+
+    &.is-loading .progress-circle path,
+    &.is-success .checkmark path,
+    &.is-error .cross path {
+      opacity: 1;
+      transition: stroke-dashoffset 0.3s;
+    }
+  }
+
+  &__submit {
+    position: relative;
+    padding: 0;
+    margin: auto;
+    cursor: none;
+    outline: none;
+    transition:
+      background-color 0.3s,
+      color 0.3s,
+      opacity 0.3s,
+      width 0.3s,
+      border-width 0.3s,
+      border-color 0.3s,
+      border-radius 0.3s;
+
+    .form__progress.is-loading & {
+      width: 0;
+      color: var(--colour-font-contrast);
+      background-color: transparent;
+      border-color: #ddd;
+      border-width: 5px;
+      opacity: 0 !important;
+    }
+
+    .form__progress.is-error &,
+    .form__progress.is-success & {
+      transition: background-color 0.3s, width 0.3s, border-width 0.3s;
+    }
+
+    .form__progress.is-success & {
+      background-color: var(--colour-primary);
+      border-color: var(--colour-primary);
+    }
+
+    .form__progress.is-error & {
+      background-color: var(--colour-primary);
+      border-color: var(--colour-primary);
+    }
+  }
+}

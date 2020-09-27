@@ -1,0 +1,46 @@
+{
+  "categories": [
+    {
+      "type": "industrial",
+      "name": "Medical design",
+      "description": "test",
+      "id": "categories-BYqgTWkC"
+    },
+    {
+      "type": "industrial",
+      "name": "Electronics",
+      "description": "rger",
+      "id": "categories-2CDhEyJL"
+    },
+    {
+      "type": "industrial",
+      "name": "Furniture",
+      "description": "gorger",
+      "id": "categories-0oT8Ww-I"
+    },
+    {
+      "type": "visual",
+      "name": "Rigging & Animation",
+      "description": "few",
+      "id": "categories-nqFQRO1C"
+    },
+    {
+      "type": "visual",
+      "name": "VFX & Simulations",
+      "description": "Berger",
+      "id": "categories-K8tLrkQE"
+    },
+    {
+      "type": "visual",
+      "name": "Modeling",
+      "description": "sdvdf",
+      "id": "categories-0CpwITf7"
+    },
+    {
+      "type": "visual",
+      "name": "Motion Graphics",
+      "description": "free",
+      "id": "categories-uZ2iXiPg"
+    }
+  ]
+}

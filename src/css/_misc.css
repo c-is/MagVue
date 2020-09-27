@@ -1,0 +1,22 @@
+::selection {
+	color:#fff;
+	text-shadow:none;
+	background:#444;
+}
+
+::-moz-selection {
+	color:#fff;
+	text-shadow:none;
+	background:#444;
+}
+
+::-webkit-selection {
+	color:#fff;
+	text-shadow:none;
+	background:#444;
+}
+
+::-webkit-input-placeholder { color: var(--colour-font-ligter); }
+::-moz-placeholder { color: var(--colour-font-ligter); }
+:-ms-input-placeholder { color: var(--colour-font-ligter); }
+:-moz-placeholder { color: var(--colour-font-ligter); }

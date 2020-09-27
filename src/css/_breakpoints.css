@@ -1,0 +1,12 @@
+/* @custom-media --viewport-phone (max-width: 480px);
+@custom-media --viewport-hd (min-width: 1920px); */
+
+@custom-media --screen-xs-max (max-width: 442px);
+@custom-media --screen-xs-min (min-width: 443px);
+@custom-media --screen-tb-max (max-width: 640px);
+@custom-media --screen-tb-min (min-width: 640px);
+@custom-media --screen-sm-max (max-width: 992px);
+@custom-media --screen-sm-min (min-width: 992px);
+@custom-media --screen-md-max (max-width: 1280px);
+@custom-media --screen-mc-max (max-width: 1440px);
+@custom-media --screen-lg-max (max-width: 1920px);
