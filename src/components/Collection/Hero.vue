@@ -145,7 +145,7 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 72.5vh;
+    height: 100vh;
     padding: 10vh 0 0;
   }
 

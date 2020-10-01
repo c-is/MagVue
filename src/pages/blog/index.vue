@@ -60,6 +60,7 @@
                     <!-- <nuxt-content :document="item" excerpt /> -->
                   </div>
                   <nuxtLink
+                    v-tilt
                     class="item__button js-button-standard"
                     :to="item.path"
                     :style="getButtonStyle(item.buttonTextColour, item.buttonColour)"

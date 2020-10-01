@@ -43,8 +43,23 @@
             </div>
           </div>
 
+          <div v-if="$store.state.status.isMobile" class="social">
+            <ul v-if="$config.accounts" class="social__list">
+              <li
+                v-for="(item, index) in $config.accounts"
+                :key="item.name"
+                class="social__item"
+                data-aos="fade-up"
+                :data-aos-delay="100 + (100 * index)"
+                data-aos-duration="300"
+              >
+                <SocialItem v-if="item" :item="item" />
+              </li>
+            </ul>
+          </div>
+
           <div
-            v-if="!$store.state.status.isMobile"
+            v-else
             ref="scrollIndicator"
             class="contact__scroll"
             data-aos="fade-up"
@@ -74,7 +89,7 @@
 
           <Form />
 
-          <div class="social">
+          <div v-if="!$store.state.status.isMobile" class="social">
             <ul v-if="$config.accounts" class="social__list">
               <li
                 v-for="(item, index) in $config.accounts"
@@ -127,6 +142,7 @@ export default {
   },
 
   mounted() {
+    this.handleIndicatorScroll();
     this.$refs.descWrapper.addEventListener('scroll', this.handleIndicatorScroll);
   },
 
@@ -177,6 +193,7 @@ export default {
   }
 
   .icon--scroll-indicator {
+    opacity: 0;
     &.is-active { opacity: 1; }
   }
 
@@ -216,7 +233,7 @@ export default {
 
       @media (--screen-sm-max) {
         min-height: 100vh;
-        padding: 8.2143rem var(--space-m-mobile) 12rem;
+        padding: 8.2143rem var(--space-m-mobile);
         color: var(--colour-font);
       }
     }
@@ -299,10 +316,6 @@ export default {
   &__scroll {
     margin-top: 3vh;
     text-align: center;
-
-    .icon--scroll-indicator {
-      @apply --hide;
-    }
   }
 }
 
@@ -311,10 +324,7 @@ export default {
   margin-bottom: 0;
 
   @media (--screen-sm-max) {
-    position: absolute;
-    bottom: 5rem;
-    left: 0;
-    width: 100%;
+    margin-top: 5rem;
   }
 
   &__list {

@@ -505,9 +505,6 @@ export default {
       overflow: auto;
     }
 
-    /* margin-bottom: 10.09vh;
-    margin-bottom: 6rem; */
-
     @media (--screen-sm-max) {
       width: 100%;
       max-height: none;
@@ -528,8 +525,6 @@ export default {
   }
 
   &__desc {
-    /* position: relative; */
-
     line-height: 2;
 
     p {
@@ -549,8 +544,6 @@ export default {
     .fab--cart {
       margin-top: 1vh;
       transition: opacity 0.4s, transform 1.2s var(--ease-out-circ);
-
-      /* transition: opacity 0.4s, transform 0.4s; */
 
       &:hover {
         transform: scale(1.125);

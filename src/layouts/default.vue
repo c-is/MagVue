@@ -13,7 +13,6 @@ import { gsap } from 'gsap';
 import AOS from 'aos';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { setBrowserDetect, browserDetect } from '../utils/__globals';
-import { registerStatus } from '../factories/registry';
 import CustomCursor from '../components/Cursor.vue';
 import Menu from '../components/Menu/index.vue';
 import Header from './Header.vue';
@@ -71,17 +70,29 @@ export default {
     Menu,
   },
   async fetch() {
-    // const ScrollToPlugin = require('gsap/ScrollToPlugin');
-    gsap.registerPlugin(ScrollToPlugin);
-    registerStatus('isMobile', browserDetect().mobile);
     setPageView(this.$route);
+    // const ScrollToPlugin = require('gsap/ScrollToPlugin');
     const navigation = await this.$content('page/navigation').fetch();
     const industrial = await this.$content('industrial').limit(this.$config.postSize || 10).only(['title', 'path']).fetch();
     const visual = await this.$content('visual').limit(this.$config.postSize || 10).only(['title', 'path']).fetch();
     this.$store.dispatch('page/setNavigation', navigation.navigation);
     this.$store.dispatch('page/setPostAll', { visual, industrial });
-    this.$store.dispatch('status/setIsMobile', browserDetect().mobile);
     this.$store.dispatch('status/setIsPageLoaded', true);
+    this.$store.dispatch('status/setIsMobile', browserDetect().mobile);
+  },
+  data() {
+    return {
+      isResizing: false,
+    };
+  },
+  watch: {
+    $route() {
+      setPageView(this.$route);
+    },
+  },
+  mounted() {
+    window.addEventListener('resize', this.setResize);
+    gsap.registerPlugin(ScrollToPlugin);
 
     AOS.init({
       // Global settings:
@@ -102,22 +113,7 @@ export default {
       once: true, // whether animation should happen only once - while scrolling down
       mirror: false, // whether elements should animate out while scrolling past them
       anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
-
     });
-  },
-  data() {
-    return {
-      isResizing: false,
-    };
-  },
-  watch: {
-    $route() {
-      console.log('route', this.$route);
-      setPageView(this.$route);
-    },
-  },
-  mounted() {
-    window.addEventListener('resize', this.setResize);
   },
   destroyed() {
     window.removeEventListener('resize', this.setResize);

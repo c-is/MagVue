@@ -24,15 +24,6 @@
     text-align: center;
   }
 
-  /* .is-home &,
-  .is-contact & {
-    height: 0;
-    padding: 0;
-    overflow: hidden;
-    visibility: hidden;
-    opacity: 0;
-  } */
-
   .is-post-industrial & {
     color: var(--colour-font-contrast);
     background-color: var(--colour-bg-secondary);

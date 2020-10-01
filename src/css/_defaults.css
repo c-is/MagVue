@@ -27,6 +27,24 @@ body {
   background-color: var(--colour-bg);
 
   > * { cursor: none !important; }
+
+  &.is-contact {
+    @media (--screen-sm-max) {
+      background-color: var(--colour-bg-secondary);
+    }
+  }
+
+  &.is-single {
+    @media (--screen-xs-min) {
+      background-color: var(--colour-bg);
+    }
+  }
+
+  &.is-post-visual {
+    @media (--screen-xs-min) {
+      background-color: var(--colour-bg);
+    }
+  }
 }
 
 button,

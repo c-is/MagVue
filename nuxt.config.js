@@ -60,6 +60,7 @@ export default {
   modules: [
     'nuxt-svg-loader',
     '@nuxt/content',
+    '@nuxtjs/device',
     // '@nuxtjs/axios',
   ],
   buildModules: [

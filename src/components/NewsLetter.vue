@@ -70,11 +70,11 @@
 
         <i
           class="newsletter__background"
-          data-animation="draw"
-          data-timing="4"
-          data-delay="1"
+          data-aos="draw"
+          data-aos-timing="400"
+          data-aos-delay="100"
         >
-          <NewsLetterBg />
+          <NewsLetterBg ref="svg" class="background" />
         </i>
       </div>
     </div>
@@ -82,6 +82,7 @@
 </template>
 
 <script>
+import { gsap } from 'gsap';
 import mixinForm from '../mixins/form';
 import NewsLetterBg from '../svgs/newsletter.svg';
 
@@ -95,6 +96,25 @@ export default {
       name: '',
       email: '',
     };
+  },
+  mounted() {
+    console.log(this.$refs);
+    const svg = this.$refs.svg.$el;
+
+    if (svg) {
+      const paths = svg.querySelectorAll('path');
+
+      if (paths) {
+        paths.forEach(path => {
+          const length = path.getTotalLength();
+          gsap.set(path, {
+            strokeDashoffset: length,
+            strokeDasharray: length,
+            // transition: 'stroke-dashoffset 4s var(--ease-out-sin)',
+          });
+        });
+      }
+    }
   },
   methods: {
     async submitForm(event) {
@@ -156,18 +176,6 @@ export default {
     margin: auto;
     color: var(--colour-primary);
     text-align: center;
-
-    &.is-passed {
-      opacity: 1;
-    }
-
-    svg {
-      transform: translateX(-20%);
-
-      @media (--screen-sm-max) {
-        height: 38vh;
-      }
-    }
   }
 
   &__content {
@@ -221,6 +229,24 @@ export default {
 
     @media (--screen-sm-max) {
       width: 100%;
+    }
+  }
+}
+
+.background {
+  transform: translateX(-20%);
+
+  @media (--screen-sm-max) {
+    height: 38vh;
+  }
+
+  .newsletter__background.aos-animate & {
+    opacity: 1;
+
+    >>> path {
+      stroke-dashoffset: 0 !important;
+      transition: stroke-dashoffset 4s var(--ease-out-sin);
+      transition-delay: 0.8s;
     }
   }
 }

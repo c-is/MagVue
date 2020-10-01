@@ -1,13 +1,22 @@
 <template>
   <header id="header" class="header" role="banner">
     <button
-      v-if="$store.state.status.isMobile && $route.path === 'single'"
+      v-if="$store.state.status.isMobile && $route.name.includes('/slug')"
       class="header__back u-text-hide"
+      @click="$router.back()"
     >
       Back to previous page
     </button>
 
-    <NavBar />
+    <nuxtLink
+      v-else-if="$store.state.status.isMobile && !$route.name.includes('/slug')"
+      class="logo-mobile"
+      to="/"
+    >
+      <LogoMobile />
+    </nuxtLink>
+
+    <NavBar v-if="!$store.state.status.isMobile" />
 
     <button
       class="menu-trigger js-button-standard"
@@ -24,9 +33,10 @@
 
 <script>
 import NavBar from './Navigation.vue';
+import LogoMobile from '../svgs/logo-mobile.svg';
 
 export default {
-  components: { NavBar },
+  components: { NavBar, LogoMobile },
   methods: {
     toggleMenu() {
       this.$store.dispatch('status/setStatusMenuOpen', !this.$store.state.status.isMenuOpen);
@@ -83,11 +93,12 @@ export default {
       @media (--screen-sm-max) {
         position: relative;
         justify-self: center;
-        width: 16px;
-        height: 27px;
+        width: 14px;
+        height: 30px;
         pointer-events: auto;
-        background-image: url(/assets/svgs/arrow-back.svg);
-        background-size: cover;
+        background-image: url(../assets/images/arrow-back.svg?inline=true);
+        background-repeat: no-repeat;
+        background-size: contain;
       }
     }
   }
@@ -153,7 +164,6 @@ export default {
     &::after { transform: rotate(-45deg) translate(4px, -5px); }
   }
 
-  &.is-loaded,
   &:hover {
     &::before,
     &::after {
@@ -166,11 +176,33 @@ export default {
   &.is-loaded {
     &::before,
     &::after {
+      background-color: var(--colour-primary);
+
       @media (--screen-sm-max) {
         .is-home & { background-color: var(--colour-primary); }
         .is-contact & { background-color: var(--colour-primary); }
       }
     }
   }
+}
+
+.logo-mobile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 100%;
+  padding: 0;
+  line-height: 1;
+  color: var(--colour-font);
+  background-color: transparent;
+
+  .is-home & { color: var(--colour-font-contrast); }
+  .is-contact & { color: var(--colour-font-contrast); }
+  .is-post-industrial & { color: var(--colour-font-contrast); }
+  .is-post-visual & { color: var(--colour-primary); }
+  .is-load-start & { color: var(--colour-font); }
+
+  svg { width: 100%; }
 }
 </style>

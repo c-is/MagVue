@@ -65,9 +65,6 @@ export default {
     ArrowLeft,
     ArrowRight,
   },
-  fetch() {
-    // this.$store.commit('widgets/add', { instance: this.cursor, instanceKey: 'cursor' });
-  },
   watch: {
     $route() {
       if (this.cursor) {
@@ -79,7 +76,10 @@ export default {
     },
   },
   mounted() {
-    console.log('mounted');
+    if (this.$store.state.status.isMobile) {
+      return;
+    }
+
     this.cursor = new Cursor(this.$refs.cursor);
     // this.cursor.update(this.$refs.cursor);
     this.cursor.events();

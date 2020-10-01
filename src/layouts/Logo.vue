@@ -1,15 +1,6 @@
 <template>
-  <div v-if="!isHidden" class="logo js-button-standard">
-    <nuxtLink
-      v-if="$store.state.status.isMobile"
-      class="logo__link"
-      to="/"
-      data-type="home"
-    >
-      <LogoMobile />
-    </nuxtLink>
-
-    <nuxtLink v-else class="logo__link" to="/">
+  <div class="logo js-button-standard">
+    <nuxtLink class="logo__link" to="/">
       <span class="logo__image">
         <span class="logo__outer">
           <LogoOuter />
@@ -29,21 +20,12 @@
 import LogoOuter from '../svgs/logo-outer.svg';
 import LogoInner from '../svgs/logo-inner.svg';
 import LogoTitle from '../svgs/logo-title.svg';
-import LogoMobile from '../svgs/logo-mobile.svg';
 
 export default {
   components: {
     LogoOuter,
     LogoInner,
     LogoTitle,
-    LogoMobile,
-  },
-  data() {
-    console.log('mob', this.$store.state.status.isMobile);
-    return {
-      isHidden: this.$route.path === 'single',
-      // isMobile: getStatus('isMobile'),
-    };
   },
 };
 </script>
@@ -60,20 +42,6 @@ export default {
   border-bottom-right-radius: var(--border-radius);
   border-bottom-left-radius: var(--border-radius);
 
-  @media (--screen-sm-max) {
-    width: 52px;
-    padding: 0;
-    line-height: 1;
-    background-color: transparent;
-
-    .is-single & {
-      position: absolute;
-      pointer-events: none;
-    }
-
-    svg { width: 100%; }
-  }
-
   &__link {
     display: inline-flex;
     align-items: center;
@@ -83,13 +51,6 @@ export default {
     padding: 0;
     color: var(--colour-font);
     .is-post-visual & { color: var(--colour-primary); }
-
-    @media (--screen-sm-max) {
-      .is-home & { color: var(--colour-font-contrast); }
-      .is-contact & { color: var(--colour-font-contrast); }
-      .is-post-industrial & { color: var(--colour-font-contrast); }
-      .is-load-start & { color: var(--colour-font); }
-    }
   }
 
   &__text {
@@ -111,10 +72,6 @@ export default {
       z-index: 2;
       width: 100%;
       height: auto;
-
-      @media (--screen-sm-max) {
-        width: 100%;
-      }
     }
   }
 

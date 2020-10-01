@@ -63,17 +63,6 @@ export default {
       right: [],
     };
   },
-  mounted() {
-    // if (this.$store.state.page.navigation) {
-    //   this.$store.state.page.navigation.forEach(item => {
-    //     if (item.position === 'left') {
-    //       this.left.push(item);
-    //     } else if (item.position === 'right') {
-    //       this.right.push(item);
-    //     }
-    //   });
-    // }
-  },
 };
 </script>
 
@@ -94,21 +83,10 @@ export default {
   .is-single & { color: var(--colour-font); }
   .is-blog & { color: var(--colour-font); }
 
-  @media (--screen-sm-max) {
-    display: block;
-    width: auto;
-    padding: 0;
-  }
-
   &__main {
     grid-column-start: 2;
     grid-column-end: 6;
     height: 100%;
-
-    @media (--screen-sm-max) {
-      position: absolute;
-      height: 0;
-    }
 
     .is-contact & { color: var(--colour-font); }
     .is-post-visual & { color: var(--colour-primary); }
@@ -190,12 +168,6 @@ export default {
     align-items: center;
     height: 100%;
 
-    @media (--screen-sm-max) {
-      height: 0;
-      visibility: hidden;
-      opacity: 0;
-    }
-
     &--sub {
       justify-content: space-between;
     }
@@ -205,11 +177,6 @@ export default {
     grid-column-start: 9;
     grid-column-end: 12;
     height: 100%;
-
-    @media (--screen-sm-max) {
-      position: absolute;
-      height: 0;
-    }
 
     .is-contact & { color: var(--colour-font-contrast); }
     .is-post-visual & { color: var(--colour-primary); }

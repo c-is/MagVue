@@ -2,7 +2,7 @@ import { gsap } from 'gsap';
 
 export default {
   mounted() {
-    if (this.$store.state.widgets && this.$store.state.widgets.cursor) {
+    if (this.$store.state.widgets.cursor && this.$store.state.widgets.cursor.reset) {
       this.$store.state.widgets.cursor.reset();
     }
   },

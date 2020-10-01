@@ -58,7 +58,8 @@ export default {
     }
 
     gsap.to(this.$refs.modal, { opacity: 1, duration: 0.4 });
-    if (this.$store.state.widgets && this.$store.state.widgets.cursor) {
+
+    if (this.$store.state.widgets.cursor && this.$store.state.widgets.cursor.reset) {
       this.$store.state.widgets.cursor.reset();
     }
   },
@@ -70,7 +71,11 @@ export default {
         gsap.to(header, { autoAlpha: 1, duration: 0.4 });
       }
       await gsap.to(this.$refs.modal, 0.4, { opacity: 0 });
-      this.$store.state.widgets.cursor.crossOff();
+
+      if (this.$store.state.widgets.cursor && this.$store.state.widgets.cursor.crossOff) {
+        this.$store.state.widgets.cursor.crossOff();
+      }
+
       this.close();
     },
     handleNavigation(index) {

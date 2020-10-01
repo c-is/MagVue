@@ -29,7 +29,7 @@
               </nuxtLink>
             </h2>
 
-            <div class="menu__collection js-menu-collection u-pc">
+            <div v-if="!$store.state.status.isMobile" class="menu__collection">
               <div class="menu__list-container">
                 <ul
                   v-if="$store.state.page.posts && $store.state.page.posts[item.name]"
@@ -144,7 +144,7 @@ export default {
       const {
         view,
         overlay,
-        posts,
+        posts = [],
         leftItems,
         rightItems,
       } = this.$refs;
@@ -181,7 +181,7 @@ export default {
 
       const {
         overlay,
-        posts,
+        posts = [],
         leftItems,
         rightItems,
       } = this.$refs;
@@ -298,8 +298,6 @@ export default {
       padding-right: 0;
       margin-right: auto;
       margin-left: auto;
-
-      /* max-width: calc(var(--content-width-mobile) - var(--space-m-mobile) * 2); */
     }
   }
 
@@ -309,11 +307,6 @@ export default {
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
-
-    @media (--screen-sm-max) {
-      height: auto;
-      -webkit-overflow-scrolling: touch;
-    }
   }
 
   &__title {
@@ -353,25 +346,17 @@ export default {
     &.is-active,
     &:hover {
       .menu__shape-container { opacity: 1; }
-
-      @media (--screen-sm-max) {
-        .menu__shape-container { opacity: 0; }
-      }
     }
 
     &.is-active {
       pointer-events: none;
-      .menu__shape-container { opacity: 1; }
-
-      @media (--screen-sm-max) {
-        .menu__shape-container { opacity: 0; }
-      }
     }
 
     @media (--screen-sm-max) {
       padding: 0;
       margin: 3.666vh 0;
       font-size: 1em;
+      svg { transform: scale(0.8); }
     }
 
     &--sub {

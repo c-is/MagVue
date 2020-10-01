@@ -3,42 +3,49 @@
     "name": "blog",
     "path": "/blog",
     "component": "/Users/yugoy2k/Sites/Magg/mag-dev-ssr/src/pages/blog/index.vue",
-    "chunkName": "pages/blog/index"
+    "chunkName": "pages/blog/index",
+    "_name": "_6a20bb59"
   },
   {
     "name": "contact",
     "path": "/contact",
     "component": "/Users/yugoy2k/Sites/Magg/mag-dev-ssr/src/pages/contact/index.vue",
-    "chunkName": "pages/contact/index"
+    "chunkName": "pages/contact/index",
+    "_name": "_2b6512c2"
   },
   {
     "name": "industrial",
     "path": "/industrial",
     "component": "/Users/yugoy2k/Sites/Magg/mag-dev-ssr/src/pages/industrial/index.vue",
-    "chunkName": "pages/industrial/index"
+    "chunkName": "pages/industrial/index",
+    "_name": "_868b0f20"
   },
   {
     "name": "visual",
     "path": "/visual",
     "component": "/Users/yugoy2k/Sites/Magg/mag-dev-ssr/src/pages/visual/index.vue",
-    "chunkName": "pages/visual/index"
+    "chunkName": "pages/visual/index",
+    "_name": "_72bc4e77"
   },
   {
     "name": "blog/slug",
     "path": "/blog/:slug",
     "component": "/Users/yugoy2k/Sites/Magg/mag-dev-ssr/src/pages/blog/_slug.vue",
-    "chunkName": "pages/blog/_slug"
+    "chunkName": "pages/blog/_slug",
+    "_name": "_686a1a11"
   },
   {
     "name": "visual/slug",
     "path": "/visual/:slug",
     "component": "/Users/yugoy2k/Sites/Magg/mag-dev-ssr/src/pages/visual/_slug.vue",
-    "chunkName": "pages/visual/_slug"
+    "chunkName": "pages/visual/_slug",
+    "_name": "_7105ad2f"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/yugoy2k/Sites/Magg/mag-dev-ssr/src/pages/index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_240cd9ce"
   }
 ]
