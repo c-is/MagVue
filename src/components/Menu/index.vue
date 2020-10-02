@@ -16,9 +16,10 @@
             <h2 class="menu__title">
               <nuxtLink
                 v-if="item.link"
-                class="js-button-standard menu__link"
+                class="menu__link"
                 :class="{ 'is-active': $route.path.includes(item.link)}"
                 :to="item.link"
+                data-cursor="standard"
                 @click.native="handleClose"
               >
                 {{ item.label }}
@@ -43,10 +44,10 @@
                   >
                     <nuxtLink
                       v-if="post.path"
-                      class="js-button-standard u-decoration-link u-decoration-link--primary"
+                      class="u-decoration-link u-decoration-link--primary"
                       :class="{ 'is-active': $route.path.includes(post.path) }"
                       :to="post.path"
-                      data-cursorSize="small"
+                      data-cursor="small"
                       @click.native="handleClose"
                     >
                       {{ post.title }}
@@ -63,7 +64,8 @@
             v-for="item in $store.state.page.navigation.right"
             :key="item.name"
             ref="rightItems"
-            class="js-button-standard menu__link menu__link--sub"
+            class="menu__link menu__link--sub"
+            data-cursor="standard"
             :class="{
               'u-text-not-ready': item.isClosed,
               'is-active': $route.path.includes(item.link)
@@ -86,21 +88,22 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue';
 import { gsap } from 'gsap';
 import { mapGetters } from 'vuex';
-import ShapeIndustrial from '../../svgs/shape-industrial-menu.svg';
-import ShapeVisual from '../../svgs/shape-visual-menu.svg';
-import ShapeShop from '../../svgs/shape-shop-menu.svg';
-import ShapeBlog from '../../svgs/shape-blog-menu.svg';
-import ShapeContact from '../../svgs/shape-contact-menu.svg';
+import ShapeIndustrial from '~/svgs/shape-industrial-menu.svg';
+import ShapeVisual from '~/svgs/shape-visual-menu.svg';
+import ShapeShop from '~/svgs/shape-shop-menu.svg';
+import ShapeBlog from '~/svgs/shape-blog-menu.svg';
+import ShapeContact from '~/svgs/shape-contact-menu.svg';
 
 const TIMING = 0.6;
 const BG_TIMING_IN = 0.6;
 // const BG_TIMING_OUT = isMobile ? 0.8 : 1
 // const BG_TIMING_IN = isMobile ? 0.4 : 0.8
 
-export default {
+export default Vue.extend({
   components: {
     ShapeIndustrial,
     ShapeVisual,
@@ -132,7 +135,7 @@ export default {
     },
   },
   methods: {
-    async handleClose() {
+    async handleClose(): Promise<void> {
       await this.onClose();
       this.$store.dispatch('status/setStatusMenuOpen', false);
     },
@@ -205,7 +208,7 @@ export default {
       this.isLoading = false;
     },
   },
-};
+});
 </script>
 
 <style lang="postcss" scoped>

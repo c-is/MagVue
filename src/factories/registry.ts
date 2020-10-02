@@ -1,4 +1,4 @@
-import { browserDetect } from '../utils/__globals';
+import { browserDetect } from '../utils/globals';
 
 const defaultStatus = {
   isLoaded: false,
@@ -20,10 +20,10 @@ const defaultGlobals = {
 };
 
 const registry = {
-  status: defaultStatus,
-  globals: defaultGlobals,
-  components: {},
-  widgets: {},
+  status: defaultStatus as { [key: string]: any },
+  globals: defaultGlobals as { [key: string]: any },
+  components: {} as { [key: string]: ClassDecorator },
+  widgets: {} as { [key: string]: ClassDecorator },
   mainImagePosition: 'centre',
 };
 
@@ -48,11 +48,11 @@ export default {
  *  Widgets
  */
 
-export function registerWidget(widgetName, widget) {
+export function registerWidget(widgetName: string, widget: ClassDecorator) {
   registry.widgets[widgetName] = widget;
 }
 
-export function getWidget(widgetName) {
+export function getWidget(widgetName: string) {
   const widget = registry.widgets[widgetName];
   if (!widget) {
     console.error(`${widgetName} doesn't exist!`);
@@ -69,7 +69,7 @@ export function getWidgetAll() {
  *  Components
  */
 
-export function registerComponent(componentName, component) {
+export function registerComponent(componentName: string, component: ClassDecorator) {
   registry.components[componentName] = component;
 }
 
@@ -77,7 +77,7 @@ export function resetComponent() {
   registry.components = {};
 }
 
-export function getComponent(componentName) {
+export function getComponent(componentName: string) {
   const component = registry.components[componentName];
   if (!component) {
     console.warn(`${componentName} doesn't exist!`);
@@ -90,18 +90,18 @@ export function getComponent(componentName) {
  *  Status
  */
 
-export function registerStatus(statusName, condition) {
+export function registerStatus(statusName: string, condition: any) {
   registry.status[statusName] = condition;
 }
 
-export function registerStatusAll(statuses) {
+export function registerStatusAll(statuses: { [key: string]: any}[]) {
   registry.status = {
     ...registry.status,
     ...statuses,
   };
 }
 
-export function getStatus(statusName) {
+export function getStatus(statusName: string) {
   return registry.status[statusName];
 }
 
@@ -113,11 +113,11 @@ export function getStatusAll() {
  *  Globals
  */
 
-export function registerGlobal(name, value) {
+export function registerGlobal(name: string, value: any) {
   registry.globals[name] = value;
 }
 
-export function getGlobal(name) {
+export function getGlobal(name: string) {
   const globalValue = registry.globals[name];
   if (!globalValue) {
     console.error(`${name} doesn't exist!`);

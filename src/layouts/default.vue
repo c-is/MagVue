@@ -12,7 +12,7 @@
 import { gsap } from 'gsap';
 import AOS from 'aos';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-import { setBrowserDetect, browserDetect } from '../utils/__globals';
+import { setBrowserDetect, browserDetect } from '../utils/globals';
 import CustomCursor from '../components/Cursor.vue';
 import Menu from '../components/Menu/index.vue';
 import Header from './Header.vue';

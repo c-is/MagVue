@@ -53,10 +53,10 @@
 </template>
 
 <script>
-import Cursor from '../widgets/Cursor';
-import Loader from '../svgs/loader.svg';
-import ArrowLeft from '../svgs/arrow-left.svg';
-import ArrowRight from '../svgs/arrow-right.svg';
+import Cursor from '~/widgets/Cursor';
+import Loader from '~/svgs/loader.svg';
+import ArrowLeft from '~/svgs/arrow-left.svg';
+import ArrowRight from '~/svgs/arrow-right.svg';
 
 export default {
   name: 'CustomCursor',
@@ -68,10 +68,7 @@ export default {
   watch: {
     $route() {
       if (this.cursor) {
-        this.cursor.shrinkBound();
-        // console.log(this.cursor);
-        // this.cursor.destroy();
-        // this.cursor.resetElements();
+        this.cursor.shrink();
       }
     },
   },
@@ -81,12 +78,9 @@ export default {
     }
 
     this.cursor = new Cursor(this.$refs.cursor);
-    // this.cursor.update(this.$refs.cursor);
     this.cursor.events();
     this.cursor.init();
-    // this.$store.dispatch('widgets/setInstance', {
-    //   nstance: this.cursor, instanceKey: 'cursor'
-    // });
+
     const instance = {
       crossOff: this.cursor.crossOff,
       reset: this.cursor.resetElements,

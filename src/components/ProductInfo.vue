@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import ArrowNext from '../svgs/arrow-next-short.svg';
+import ArrowNext from '~/svgs/arrow-next-short.svg';
 
 export default {
   components: { ArrowNext },

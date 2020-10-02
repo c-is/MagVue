@@ -9,8 +9,8 @@
         >
           <nuxtLink
             v-if="item.link"
-            class="navigation__link navigation__link--main js-button-standard"
-            data-cursorSize="small"
+            class="navigation__link navigation__link--main"
+            data-cursor="small"
             :to="item.link"
             :class="{
               'is-active': $route.path.includes(item.link),
@@ -34,8 +34,8 @@
         >
           <nuxtLink
             v-if="item.link"
-            class="navigation__link navigation__link--sub js-button-standard"
-            data-cursorSize="small"
+            class="navigation__link navigation__link--sub"
+            data-cursor="small"
             :to="item.link"
             :class="{
               'is-active': $route.path.includes(item.link),

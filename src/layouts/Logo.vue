@@ -1,5 +1,5 @@
 <template>
-  <div class="logo js-button-standard">
+  <div class="logo" data-cursor="standard">
     <nuxtLink class="logo__link" to="/">
       <span class="logo__image">
         <span class="logo__outer">
@@ -17,9 +17,9 @@
 </template>
 
 <script>
-import LogoOuter from '../svgs/logo-outer.svg';
-import LogoInner from '../svgs/logo-inner.svg';
-import LogoTitle from '../svgs/logo-title.svg';
+import LogoOuter from '~/svgs/logo-outer.svg';
+import LogoInner from '~/svgs/logo-inner.svg';
+import LogoTitle from '~/svgs/logo-title.svg';
 
 export default {
   components: {

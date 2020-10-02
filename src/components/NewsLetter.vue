@@ -50,7 +50,8 @@
           <div class="form__row form__row--button">
             <div
               ref="progressor"
-              class="form__progress js-button-standard"
+              class="form__progress"
+              data-cursor="standard"
               :class="{
                 'is-loading': isLoading,
                 'is-success': isSuccess,
@@ -83,8 +84,8 @@
 
 <script>
 import { gsap } from 'gsap';
-import mixinForm from '../mixins/form';
-import NewsLetterBg from '../svgs/newsletter.svg';
+import mixinForm from '~/mixins/form';
+import NewsLetterBg from '~/svgs/newsletter.svg';
 
 export default {
   components: {
@@ -98,11 +99,10 @@ export default {
     };
   },
   mounted() {
-    console.log(this.$refs);
-    const svg = this.$refs.svg.$el;
+    const { svg } = this.$refs;
 
-    if (svg) {
-      const paths = svg.querySelectorAll('path');
+    if (svg && svg.$el) {
+      const paths = svg.$el.querySelectorAll('path');
 
       if (paths) {
         paths.forEach(path => {
@@ -110,7 +110,6 @@ export default {
           gsap.set(path, {
             strokeDashoffset: length,
             strokeDasharray: length,
-            // transition: 'stroke-dashoffset 4s var(--ease-out-sin)',
           });
         });
       }
@@ -131,11 +130,6 @@ export default {
         headers: { AuthToken: this.$config.benchmark },
         data: {
           Data: {
-            // Name: 'Yug List',
-            // Description: 'Preacher maaaaaaaaan',
-            // FirstName: 'Yugu',
-            // LastName: 'Ug',
-            // Email: 'preachermaaaaaaaan@trashbat.co.ck',
             FirstName: firstName,
             LastName: lastName,
             Email: this.email,

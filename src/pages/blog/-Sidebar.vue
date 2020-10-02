@@ -177,7 +177,7 @@ export default {
       this.email = '';
     },
 
-    async handleSearch(event) {
+    handleSearch(event) {
       const handleSearch = () => this.onSearch('search', event.target.value);
       clearTimeout(this.timer);
       this.timer = setTimeout(handleSearch, WAIT_INTERVAL);

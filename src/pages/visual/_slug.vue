@@ -15,9 +15,10 @@
           <div class="single__text">
             <a
               v-if="!$store.state.status.isMobile"
-              class="single__back js-button-standard"
+              class="single__back"
               data-aos="fade-right"
               data-aos-delay="400"
+              data-cursor="standard"
               @click="$router.back()"
             >
               <ArrowBack />
@@ -48,7 +49,10 @@
 
             <div class="single__subinfo" data-aos="fade" data-aos-delay="400">
               <button
-                class="button button--expand js-button-standard"
+                v-if="isExpandButtonActive"
+                ref="expandButton"
+                class="button button--expand"
+                data-cursor="standard"
                 @click="handleExpand"
               >
                 Open
@@ -57,9 +61,10 @@
               <a
                 v-if="page.shop"
                 href=""
-                class="fab fab--cart js-button-standard"
+                class="fab fab--cart"
                 data-type="entrance"
                 data-colour="outline"
+                data-cursor="standard"
               >
                 <IconCart />
               </a>
@@ -75,8 +80,8 @@
               class="single__image"
             >
               <img
-                class="js-button-standard"
                 alt="gallery"
+                data-cursor="standard"
                 :src="`https://img.youtube.com/vi/${video}/hqdefault.jpg`"
                 :data-src="`https://img.youtube.com/vi/${video}/hqdefault.jpg`"
                 :data-video-id="video"
@@ -95,11 +100,13 @@
               autoplay
               loop
               class="js-button-standard"
+              data-cursor="standard"
               @click="onModalOpen(gallery, index)"
             />
             <img
               v-else
-              class="js-button-standard  js-lazyload"
+              class="js-lazyload"
+              data-cursor="standard"
               alt="gallery"
               :src="gallery.replace('upload/', 'upload/w_5,c_scale/')"
               :data-src="gallery"
@@ -134,14 +141,14 @@
 
 <script>
 import { gsap } from 'gsap';
-import mixinGlobal from '../../mixins/global';
-import ImageModal from '../../components/ImageModal.vue';
-import PostIndex from '../../components/PostIndex.vue';
-import NewsLetter from '../../components/NewsLetter.vue';
-import PostScroller from '../../widgets/PostScroller';
-import ProductInfo from '../../components/ProductInfo.vue';
-import ArrowBack from '../../svgs/arrow-back.svg';
-import IconCart from '../../svgs/icon-cart.svg';
+import mixinGlobal from '~/mixins/global';
+import ImageModal from '~/components/ImageModal.vue';
+import PostIndex from '~/components/PostIndex.vue';
+import NewsLetter from '~/components/NewsLetter.vue';
+import PostScroller from '~/widgets/PostScroller';
+import ProductInfo from '~/components/ProductInfo.vue';
+import ArrowBack from '~/svgs/arrow-back.svg';
+import IconCart from '~/svgs/icon-cart.svg';
 
 const MIN_HEIGHT = 580;
 
@@ -221,6 +228,7 @@ export default {
       if (desc && descWrapper) {
         const descWrapperHeight = descWrapper.clientHeight;
         const descHeight = desc.clientHeight;
+
         if (descHeight > descWrapperHeight) {
           this.isExpandButtonActive = true;
         }
@@ -355,9 +363,6 @@ export default {
     border: none;
     outline: none;
 
-    @apply --hide;
-    &.is-active { @apply --show; }
-
     &::after {
       transform: rotate(90deg);
     }
@@ -419,7 +424,6 @@ export default {
   &__back {
     display: inline-block;
     margin-bottom: 5vh;
-    margin-left: -1rem;
     color: var(--colour-font);
     transition: color 0.4s;
 

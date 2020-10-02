@@ -10,7 +10,8 @@
         <div class="blog-post__column is-first">
           <a
             v-if="!$store.state.status.isMobile"
-            class="blog-post__back js-button-standard"
+            class="blog-post__back"
+            data-cursor="standard"
             data-aos="fade-right"
             data-aos-delay="400"
             @click="$router.back()"
@@ -64,9 +65,9 @@
 </template>
 
 <script>
-import ArrowBack from '../../svgs/arrow-back.svg';
-import mixinGlobal from '../../mixins/global';
-import NewsLetter from '../../components/NewsLetter.vue';
+import ArrowBack from '~/svgs/arrow-back.svg';
+import mixinGlobal from '~/mixins/global';
+import NewsLetter from '~/components/NewsLetter.vue';
 import SocialItem from './-SocialItem.vue';
 
 export default {

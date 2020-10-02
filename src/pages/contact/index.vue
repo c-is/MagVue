@@ -112,11 +112,11 @@
 <script>
 import { gsap } from 'gsap';
 import SocialItem from './-SocialItem.vue';
-import mixinGlobal from '../../mixins/global';
-import ProductInfo from '../../components/ProductInfo.vue';
-import Form from '../../components/Form.vue';
-import ShapeContact from '../../svgs/shape-contact.svg';
-import ArrowDown from '../../svgs/arrow-down.svg';
+import mixinGlobal from '~/mixins/global';
+import ProductInfo from '~/components/ProductInfo.vue';
+import Form from '~/components/Form.vue';
+import ShapeContact from '~/svgs/shape-contact.svg';
+import ArrowDown from '~/svgs/arrow-down.svg';
 
 export default {
   components: {

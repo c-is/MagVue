@@ -19,13 +19,13 @@
     <NavBar v-if="!$store.state.status.isMobile" />
 
     <button
-      class="menu-trigger js-button-standard"
+      class="menu-trigger"
       :class="{
         'is-active': $store.state.status.isMenuOpen,
         'is-loaded': $store.state.status.isMenuOpen,
       }"
       aria-label="Menu"
-      data-cursorSize="small"
+      data-cursor="small"
       @click="toggleMenu"
     />
   </header>
@@ -33,7 +33,7 @@
 
 <script>
 import NavBar from './Navigation.vue';
-import LogoMobile from '../svgs/logo-mobile.svg';
+import LogoMobile from '~/svgs/logo-mobile.svg';
 
 export default {
   components: { NavBar, LogoMobile },

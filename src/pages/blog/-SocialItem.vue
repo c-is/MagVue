@@ -2,25 +2,15 @@
   <a
     :href="link"
     target="_blank"
-    class="social-item js-button-standrd"
-    data-cursorSize="small"
+    class="social-item"
+    data-cursor="small"
   >
     <component :is="componentInstance" />
   </a>
 </template>
 
 <script>
-// import { defineAsyncComponent } from 'vue';
-
 export default {
-  // components: {
-  //   ProductInfo,
-  //   ShapeContact,
-  //   ArrowDown,
-  //   ProgressCircle,
-  //   Check,
-  //   Cross,
-  // },
   props: {
     item: Object,
     url: String,

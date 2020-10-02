@@ -1,6 +1,6 @@
 <template>
   <section
-    :class="`hero hero--${className} js-section js-full-height`"
+    :class="`hero hero--${className} js-section`"
     :data-bgcolour="bgColour"
   >
     <div class="hero__title-container">
@@ -27,9 +27,9 @@
           <ul data-aos="fade-up" data-aos-delay="200">
             <li class="category__item">
               <button
-                class="category__button js-button-standard"
+                class="category__button"
                 :class="{ 'is-active': !selected}"
-                data-cursorSize="small"
+                data-cursor="small"
                 data-filter-id="*"
                 @click="onFilter(null)"
               >
@@ -43,9 +43,9 @@
               class="category__item"
             >
               <button
-                class="category__button js-button-standard"
+                class="category__button"
                 :class="{ 'is-active': selected === category.id}"
-                data-cursorSize="small"
+                data-cursor="small"
                 :data-filter-id="category.id"
                 @click="onFilter(category.id)"
               >
@@ -59,10 +59,10 @@
   </section>
 </template>
 
-<script>
-import ShapeIndustrial from '../../svgs/shape-industrial.svg';
-import ShapeVisual from '../../svgs/shape-visual.svg';
-import ShapeBlog from '../../svgs/shape-blog.svg';
+<script lang="ts">
+import ShapeIndustrial from '~/svgs/shape-industrial.svg';
+import ShapeVisual from '~/svgs/shape-visual.svg';
+import ShapeBlog from '~/svgs/shape-blog.svg';
 
 export default {
   components: { ShapeIndustrial, ShapeVisual, ShapeBlog },

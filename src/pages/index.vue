@@ -9,11 +9,12 @@
           <nuxtLink
             v-tilt
             to="/industrial"
-            class="home__link button button--link js-button-standard"
+            class="home__link button button--link"
             data-type="industrial"
             data-colour="secondary"
-            data-animation="fadeUp"
+            data-aos="fade-up"
             data-animation-mobile="fadeDown"
+            data-cursor="standard"
           >
             <span>See industrial projects</span>
           </nuxtLink>
@@ -28,10 +29,11 @@
           <nuxtLink
             v-tilt
             to="/visual"
-            class="home__link button button--link js-button-standard"
+            class="home__link button button--link"
             data-type="visual"
             data-colour="primary"
-            data-animation="fadeUp"
+            data-aos="fade-up"
+            data-cursor="standard"
           >
             <span>See design projects</span>
           </nuxtLink>
@@ -59,7 +61,7 @@
 </template>
 
 <script>
-import mixinGlobal from '../mixins/global';
+import mixinGlobal from '~/mixins/global';
 
 export default {
   mixins: [mixinGlobal],
@@ -187,13 +189,15 @@ export default {
   }
 
   @media (--screen-sm-max) {
+    display: grid;
     flex-direction: column;
+    grid-template-columns: repeat(5, var(--grid-width-mobile));
+    grid-column-gap: var(--gutter-space-mobile);
+    align-items: center;
     justify-content: center;
     width: 100%;
     height: 50%;
     text-align: center;
-
-    @apply --grid-mobile;
   }
 
   &__inner {

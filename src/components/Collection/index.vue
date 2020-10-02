@@ -1,40 +1,4 @@
 <template>
-  <!-- {% if page.postType == 'industrial' %}
-  {% assign defaultTitle = 'Industrial Design' %}
-  {% assign type = 'industrial' %}
-  {% assign className = 'industrial' %}
-  {% assign bgColour = '#272727' %}
-  {% assign shopButton = 'Shop industrial products' %}
-  {% assign drawerHref = '/visual' %}
-  {% assign drawerType = 'visual' %}
-  {% assign drawerDir = 'left' %}
-  {% assign drawerTitle = '3D/2D design' %}
-  {% assign fadeDir = 'fadeLeft' %}
-{% else %}
-  {% assign defaultTitle = '3D/2D Design' %}
-  {% assign type = 'visual' %}
-  {% assign className = 'visual' %}
-  {% assign bgColour = '#2727ff' %}
-  {% assign shopButton = 'Shop design products' %}
-  {% assign drawerHref = '/industrial' %}
-  {% assign drawerType = 'industrial' %}
-  {% assign drawerDir = 'right' %}
-  {% assign drawerTitle = 'Industrial design' %}
-  {% assign fadeDir = 'fadeRight' %}
-{% endif %}
-
-{% assign indexType = 'post' %}
-{% assign postType = page.postType %}
-{% assign posts = site[postType] %}
-{% assign postsSorted = posts | sort: 'date' | reverse %}
-
-{% assign postLimit = site.posts_per_page | append: '.0' %}
-
-{% if site.data.categories.categories %}
-  {% assign categories = site.data.categories.categories | where: "type", postType %}
-{% endif %}
--->
-
   <main
     id="main"
     class="main main--post"
@@ -44,11 +8,12 @@
     :data-posttype="className"
   >
     <div
-      class="drawer js-drawer js-cursor js-button-arrows"
+      class="drawer js-drawer"
       :data-target="className"
       :data-href="drawerHref"
       :data-type="drawerType"
       :data-direction="drawerDir"
+      data-cursor="arrow"
     >
       <div class="drawer__inner js-anim-drawer-inner" />
     </div>
@@ -102,8 +67,9 @@
                 <nuxtLink
                   v-if="post.path"
                   :to="post.path"
-                  class="js-button-standard post__link"
+                  class="post__link"
                   data-type="single"
+                  data-cursor="standard"
                 >
                   <img
                     v-if="post.thumbnail && post.thumbnail !== ''"
@@ -126,20 +92,21 @@
   </main>
 </template>
 
-<script>
+<script lang="ts">
 import { gsap } from 'gsap';
+import IconVideo from '~/svgs/icon-video.svg';
 import Hero from './Hero.vue';
 import Pagination from '../Pagination.vue';
 import PostIndex from '../PostIndex.vue';
 import NewsLetter from '../NewsLetter.vue';
-import IconVideo from '../../svgs/icon-video.svg';
+
+interface Styles {
+  color?: string
+  backgroundColor?: string;
+  border?: string;
+}
 
 export default {
-  // data() {
-  //   return {
-  //     isMobile,
-  //   };
-  // },
   components: {
     Hero,
     Pagination,
@@ -187,7 +154,7 @@ export default {
       }
     },
     getItemStyle(titleColour, background) {
-      const styles = {};
+      const styles: Styles = {};
 
       if (titleColour) {
         styles.color = `var(--${titleColour[0].value})`;
@@ -200,7 +167,7 @@ export default {
       return styles;
     },
     getVideoButtonStyle(iconColour) {
-      const styles = {};
+      const styles: Styles = {};
 
       if (iconColour) {
         styles.color = `var(--${iconColour[0].value})`;
@@ -209,7 +176,7 @@ export default {
       return styles;
     },
     getInnerStyle(circleColour, circleLine) {
-      const styles = {};
+      const styles: Styles = {};
 
       if (circleColour) {
         styles.backgroundColor = `var(--${circleColour[0].value})`;
@@ -365,18 +332,22 @@ html:not(.safari) .post__item-inner:hover .post-image { transform: scale(1.1); }
   }
 
   &__inner {
-    @apply --grid;
-
+    display: grid;
+    grid-template-columns: repeat(12, minmax(auto, var(--grid-width)));
+    grid-column-gap: var(--gutter-space);
+    justify-content: space-between;
     max-width: var(--content-max-width);
     padding: 0;
     margin-right: auto;
     margin-left: auto;
+
     .is-post-industrial & { color: var(--colour-font-contrast); }
     .is-post-visual & { color: var(--colour-primary); }
 
     @media (--screen-sm-max) {
-      @apply --grid-tablet;
-
+      display: grid;
+      grid-template-columns: repeat(12, var(--grid-width));
+      grid-column-gap: var(--gutter-space-tablet);
       justify-content: center;
     }
 

@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer" role="contentinfo" data-animation="fadeIn" data-delay="0.4">
+  <footer class="footer" role="contentinfo" data-aos="fade" data-aos-delay="400">
     <span class="footer__copyright">Copyright © 2020 Jigen 次元 ー Studio . All rights reserved.</span>
     <span class="footer__divider u-pc">・</span>
     <a class="footer__link js-button-standard" href="">Privacy policy</a>

@@ -55,7 +55,8 @@
       <div
         ref="progressor"
         v-tilt
-        class="form__progress js-button-standard"
+        data-cursor="standard"
+        class="form__progress"
         :class="{
           'is-loading': isLoading,
           'is-success': isSuccess,
@@ -75,7 +76,7 @@
 </template>
 
 <script>
-import mixinForm from '../mixins/form';
+import mixinForm from '~/mixins/form';
 
 export default {
   mixins: [mixinForm],

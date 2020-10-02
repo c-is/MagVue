@@ -6,7 +6,7 @@
  * @param {HTMLElement} el [dom element]
  * @param {String} checkClass  [check class, no dot]
  */
-export function hasClass(el, checkClass) {
+export function hasClass(el: HTMLElement, checkClass: string) {
   return el.className.match(new RegExp(`(\\s|^)${checkClass}(\\s|$)`));
 }
 
@@ -16,7 +16,7 @@ export function hasClass(el, checkClass) {
  * @param {HTMLElement} el [dom element]
  * @param {String} newClass [add new class, no dot]
  */
-export function addClass(el, newClass) {
+export function addClass(el: HTMLElement, newClass: string) {
   if (el.classList) el.classList.add(newClass);
   else el.className += ` ${newClass}`;
 }
@@ -27,7 +27,7 @@ export function addClass(el, newClass) {
  * @param {HTMLElement} el [dom element]
  * @param {String} classToRemove [remove class, no dot]
  */
-export function removeClass(el, classToRemove) {
+export function removeClass(el: HTMLElement, classToRemove: string) {
   if (el.classList) el.classList.remove(classToRemove);
   else {
     el.className = el.className.replace(new RegExp(`(^|\\b)${classToRemove.split(' ').join('|')}(\\b|$)`, 'gi'), '');
@@ -47,7 +47,7 @@ export function removeClass(el, classToRemove) {
 * @param {HTMLElement} el [dom element]
 * @param {String} attr [data-attr suffix]
 */
-export function getAttribute(el, attr) {
+export function getAttribute(el: HTMLElement, attr: string) {
   return el.getAttribute(`data-${attr}`);
 }
 
@@ -58,8 +58,8 @@ export function getAttribute(el, attr) {
 * @param {String} attr [data-attr suffix]
 * @return {Object} contains width and height properties
 */
-export function setAttribute(el, attr, val = '') {
-  if (el.getAttribute(`data-${attr}`) != val) el.setAttribute(`data-${attr}`, val);
+export function setAttribute(el: HTMLElement, attr: string, val: string | boolean | null = '') {
+  if (el.getAttribute(`data-${attr}`) != val) el.setAttribute(`data-${attr}`, String(val));
 }
 
 /**
@@ -68,7 +68,7 @@ export function setAttribute(el, attr, val = '') {
 * @param {HTMLElement} el [dom element]
 * @param {String} attr [data-attr suffix]
 */
-export function toggleAttribute(el, attr) {
+export function toggleAttribute(el: HTMLElement, attr: string) {
   if (el.getAttribute(`data-${attr}`) === 'true') el.setAttribute(`data-${attr}`, 'false');
   else el.setAttribute(`data-${attr}`, 'true');
 }
@@ -90,7 +90,7 @@ export function isRetina() {
   return false;
 }
 
-export function hexToRgb(hex) {
+export function hexToRgb(hex: string) {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
 
   return result ? {
@@ -102,13 +102,13 @@ export function hexToRgb(hex) {
 
 export function getUrlVars() {
   const vars = [];
-  let hash;
+  let hash: string[];
   const hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
 
   for (let i = 0; i < hashes.length; i += 1) {
     hash = hashes[i].split('=');
     vars.push(hash[0]);
-    vars[hash[0]] = hash[1];
+    vars[Number(hash[0])] = hash[1];
   }
   return vars;
 }

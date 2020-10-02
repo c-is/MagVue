@@ -1,3 +1,22 @@
+import { $content as ContentType } from '@nuxt/content';
+
+interface GetNumberOfPages {
+  $content: typeof ContentType;
+  category?: string | null;
+  size: number;
+  year?: string;
+  search?: string;
+}
+
+interface GetPostsOfPage extends GetNumberOfPages {
+  page: number;
+}
+
+interface GetPosts extends GetNumberOfPages {
+  current: number;
+  count?: number;
+}
+
 const POSTS_PER_PAGE = 5;
 
 const pagination = {
@@ -8,7 +27,7 @@ const pagination = {
     size = POSTS_PER_PAGE,
     year,
     search,
-  }) {
+  }: GetPostsOfPage) {
     let query = {};
     let content = $content('blog');
 
@@ -42,7 +61,7 @@ const pagination = {
     year,
     search,
     size = POSTS_PER_PAGE,
-  }) {
+  }: GetNumberOfPages) {
     let query = {};
     let content = $content('blog');
 
@@ -66,16 +85,14 @@ const pagination = {
 };
 
 async function getPosts({
-  // @ts-ignore
   $content,
-  // @ts-ignore
   category,
   size = POSTS_PER_PAGE,
   current,
   count,
   year,
   search,
-}) {
+}: GetPosts) {
   const pageCount = count || await pagination.getNumberOfPages({
     $content,
     category,

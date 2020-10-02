@@ -90,10 +90,10 @@
 
 <script>
 import { gsap } from 'gsap';
-import mixinGlobal from '../../mixins/global';
-import Pagination from '../../components/Pagination.vue';
-import NewsLetter from '../../components/NewsLetter.vue';
-import Hero from '../../components/Collection/Hero.vue';
+import mixinGlobal from '~/mixins/global';
+import Pagination from '~/components/Pagination.vue';
+import NewsLetter from '~/components/NewsLetter.vue';
+import Hero from '~/components/Collection/Hero.vue';
 import BlogFilter from './-Filter.vue';
 import Sidebar from './-Sidebar.vue';
 // eslint-disable-next-line

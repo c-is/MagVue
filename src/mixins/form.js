@@ -1,8 +1,8 @@
 import axios from 'axios';
-import ProgressCircle from '../svgs/progress-circle.svg';
-import Check from '../svgs/check.svg';
-import Cross from '../svgs/cross.svg';
-import Progress from '../widgets/DrawProgress';
+import ProgressCircle from '~/svgs/progress-circle.svg';
+import Check from '~/svgs/check.svg';
+import Cross from '~/svgs/cross.svg';
+import Progress from '~/widgets/DrawProgress';
 
 const DEFAULT_REQUIRED_MESSAGE = 'Please fill the required input';
 const DEFAULT_ERROR_MESSAGE = 'Error has occurred so fuck off';
@@ -119,7 +119,6 @@ export default {
     },
 
     async sendForm(submitData) {
-      // Utils.setAttribute(this.cursor, 'expand', false);
       this.isLoading = true;
       this.isDisabled = false;
 

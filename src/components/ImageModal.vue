@@ -1,6 +1,6 @@
 <template>
   <div ref="modal" class="modal">
-    <div class="modal__overlay js-button-cross" @click="handleClose" />
+    <div class="modal__overlay" data-cursor="cross" @click="handleClose" />
 
     <fragment v-if="current">
       <video
@@ -16,19 +16,21 @@
     </fragment>
 
     <span
-      class="modal__nav modal__nav--left js-button-standard"
+      class="modal__nav modal__nav--left"
+      data-cursor="standard"
       :class="{ 'is-hidden': !gallery[index - 1] }"
       @click="handleNavigation(index - 1)"
     />
     <span
-      class="modal__nav modal__nav--right js-button-standard"
+      class="modal__nav modal__nav--right"
+      data-cursor="standard"
       :class="{ 'is-hidden': !gallery[index + 1] }"
       @click="handleNavigation(index + 1)"
     />
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { gsap } from 'gsap';
 
 export default {
@@ -59,9 +61,9 @@ export default {
 
     gsap.to(this.$refs.modal, { opacity: 1, duration: 0.4 });
 
-    if (this.$store.state.widgets.cursor && this.$store.state.widgets.cursor.reset) {
-      this.$store.state.widgets.cursor.reset();
-    }
+    // if (this.$store.state.widgets.cursor && this.$store.state.widgets.cursor.reset) {
+    //   this.$store.state.widgets.cursor.reset();
+    // }
   },
   methods: {
     async handleClose() {

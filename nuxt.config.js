@@ -66,7 +66,7 @@ export default {
   buildModules: [
     '@nuxtjs/style-resources',
     '@nuxtjs/stylelint-module',
-    // '@nuxt/typescript-build',
+    '@nuxt/typescript-build',
   ],
   // axios: {
   //   proxy: true,

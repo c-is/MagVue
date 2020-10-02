@@ -7,9 +7,9 @@
       class="pagination__item"
     >
       <button
-        class="js-button-standard js-pagination-link pagination__link"
+        class="js-pagination-link pagination__link"
         :data-page="index"
-        data-cursorSize="small"
+        data-cursor="small"
         @click="onClick(index)"
       >
         {{ index }}
@@ -74,12 +74,6 @@ export default {
 
     &.is-active {
       pointer-events: none;
-    }
-
-    &.is-hidden {
-      @apply --hide;
-
-      width: 0;
     }
   }
 

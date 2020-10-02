@@ -1,5 +1,32 @@
+interface Refs {
+  view: HTMLDivElement;
+  text: HTMLElement;
+  gallery: HTMLElement;
+}
+
+interface Section {
+  el: HTMLImageElement;
+  start: number;
+  y: number;
+  height: number;
+}
+
 export default class Scroller {
-  constructor(refs = {}) {
+  view: HTMLElement;
+
+  refs: Refs;
+
+  sections: Section[];
+
+  sectionIndex: number;
+
+  storePosition: number;
+
+  isScrollAnimating: boolean;
+
+  onScrollTextBound: () => void;
+
+  constructor(refs: Refs) {
     this.view = refs.view;
     this.refs = refs;
     this.sections = [];
@@ -10,7 +37,7 @@ export default class Scroller {
   }
 
   storeCache() {
-    const sections = [];
+    const sections: Section[] = [];
     const images = this.refs.gallery.querySelectorAll('img');
 
     images.forEach(image => {
@@ -30,7 +57,6 @@ export default class Scroller {
     const st = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
     const wh = window.innerHeight;
     const infoHeight = this.refs.text.clientHeight;
-
     const sideNavHeight = wh - infoHeight;
 
     const box = this.refs.gallery.getBoundingClientRect().top;

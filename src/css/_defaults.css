@@ -111,7 +111,8 @@ ul {
   height: 100%;
 }
 
-.js-button-standard {
+[data-cursor="standard"],
+[data-cursor="small"] {
   position: relative;
   padding: 1em;
 

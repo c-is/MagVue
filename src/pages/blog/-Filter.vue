@@ -21,8 +21,8 @@
               class="filter__item"
             >
               <button
-                class="filter__button js-button-standard"
-                data-cursorSize="small"
+                class="filter__button"
+                data-cursor="small"
                 :data-filter-id="month.value"
                 @click="onFilter('time', month.value)"
               >
@@ -53,9 +53,9 @@
             class="filter__item"
           >
             <button
-              class="filter__button js-button-standard"
+              class="filter__button"
               :class="{ 'is-active': selectedCategory === category.id}"
-              data-cursorSize="small"
+              data-cursor="small"
               :data-filter-id="category.id"
               @click="onFilter('category', category.id)"
             >

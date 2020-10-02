@@ -9,9 +9,9 @@
       >
         <nuxtLink
           :to="prev.path"
-          class="js-button-standard"
           data-type="single"
           data-transition="prev"
+          data-cursor="standard"
         >
           <i class="arrow arrow--head">
             <ArrowSmallLeft />
@@ -46,9 +46,9 @@
         <ul class="post-index__list">
           <li v-for="(post, index) in posts" :key="post.path">
             <nuxtLink
-              class="js-button-standard u-decoration-link"
+              class="u-decoration-link"
               :to="post.path"
-              data-cursorSize="small"
+              data-cursor="small"
               data-aos="fade-up"
               :data-aos-delay="index * 100"
               data-type="single"
@@ -67,9 +67,9 @@
       >
         <nuxtLink
           :to="next.path"
-          class="js-button-standard"
           data-type="single"
           data-transition="next"
+          data-cursor="standard"
         >
           Next project
           <i class="arrow arrow--tail">
@@ -81,7 +81,8 @@
 
     <div class="post-scrolltop" data-aos="fade-up" data-aos-delay="800">
       <button
-        class="js-button-standard button button--scrolltop post-scrolltop__button"
+        class="button button--scrolltop post-scrolltop__button"
+        data-cursor="standard"
         :class="{ 'is-alt': isButtonSecondary }"
         @click="handleScroll"
       >

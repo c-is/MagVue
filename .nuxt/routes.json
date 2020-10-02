@@ -28,6 +28,13 @@
     "_name": "_72bc4e77"
   },
   {
+    "name": "blog/post",
+    "path": "/blog/post",
+    "component": "/Users/yugoy2k/Sites/Magg/mag-dev-ssr/src/pages/blog/post.ts",
+    "chunkName": "pages/blog/post",
+    "_name": "_73a0e73c"
+  },
+  {
     "name": "blog/slug",
     "path": "/blog/:slug",
     "component": "/Users/yugoy2k/Sites/Magg/mag-dev-ssr/src/pages/blog/_slug.vue",
