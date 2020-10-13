@@ -7,7 +7,7 @@
       class="pagination__item"
     >
       <button
-        class="js-pagination-link pagination__link"
+        class="pagination__link"
         :data-page="index"
         data-cursor="small"
         @click="onClick(index)"

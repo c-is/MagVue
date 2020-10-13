@@ -7,7 +7,7 @@ export default class DrawProgress {
 
   lengthsArr: number[];
 
-  constructor (el: HTMLElement) {
+  constructor(el: HTMLElement) {
     this.el = el;
     this.paths = [].slice.call(this.el.querySelectorAll('path'));
     this.pathsArr = [];

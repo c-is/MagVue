@@ -12,9 +12,9 @@
 import { gsap } from 'gsap';
 import AOS from 'aos';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-import { setBrowserDetect, browserDetect } from '../utils/globals';
-import CustomCursor from '../components/Cursor.vue';
-import Menu from '../components/Menu/index.vue';
+import { setBrowserDetect, browserDetect } from '~/utils/globals';
+import CustomCursor from '~/components/Cursor.vue';
+import Menu from '~/components/Menu/index.vue';
 import Header from './Header.vue';
 import Footer from './Footer.vue';
 
@@ -54,6 +54,9 @@ function setPageView(route) {
     case 'blog/slug':
       document.body.classList.add('is-blog');
       break;
+    case 'coming-soon':
+      document.body.classList.add('is-coming-soon');
+      break;
     case 'index':
       document.body.classList.add('is-home');
       break;
@@ -91,6 +94,8 @@ export default {
     },
   },
   mounted() {
+    // const { CustomEase } = await import('gsap/CustomEase');
+
     window.addEventListener('resize', this.setResize);
     gsap.registerPlugin(ScrollToPlugin);
 

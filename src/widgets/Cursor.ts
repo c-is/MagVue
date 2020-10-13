@@ -1,7 +1,7 @@
 import { gsap } from 'gsap';
 // eslint-disable-next-line
-import * as Utils from '../utils/utils';
-import { browserDetect } from '../utils/globals';
+import * as Utils from '~/utils/utils';
+import { browserDetect } from '~/utils/globals';
 import observer from './observer';
 
 /* global NodeListOf */
@@ -204,6 +204,7 @@ export default class Cursor {
       this.darkElements[x].removeEventListener('mouseenter', this.dark);
     }
 
+    this.shrink();
     this.init();
   }
 

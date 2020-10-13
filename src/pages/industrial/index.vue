@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import mixinCollection from '../../mixins/collection';
+import mixinCollection from '~/mixins/collection';
 
 export default {
   mixins: [mixinCollection],

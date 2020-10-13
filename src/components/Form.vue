@@ -63,7 +63,7 @@
           'is-error': isError,
         }"
       >
-        <button class="form__submit js-submit button button--link" data-colour="primary">
+        <button class="form__submit button button--link" data-colour="primary">
           <span class="button__text">Submit</span>
         </button>
 

@@ -1,6 +1,7 @@
 import { gsap } from 'gsap';
 
 export default {
+  middleware: ['getPage'],
   mounted() {
     if (this.$store.state.widgets.cursor && this.$store.state.widgets.cursor.reset) {
       this.$store.state.widgets.cursor.reset();
@@ -11,7 +12,7 @@ export default {
     mode: 'out-in',
     async leave(el, done) {
       await gsap.to(el.querySelector('.content'), {
-        opacity: 0, y: 20, duration: 0.4, ease: 'back',
+        opacity: 0, y: -20, duration: 0.4, ease: 'back',
       });
       done();
     },

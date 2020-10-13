@@ -222,16 +222,8 @@ export default {
     }
   }
 
-  /* &__title {
-    @media (--screen-xs-max) {
-      color: var(--colour-font-contrast);
-    }
-  } */
-
   &__wrapper {
     display: flex;
-
-    /* justify-content: space-between; */
   }
 
   &__group {

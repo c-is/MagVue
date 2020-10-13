@@ -1,3 +1,5 @@
+// declare let CustomEase;
+
 declare module '*.vue' {
   import Vue from 'vue';
 

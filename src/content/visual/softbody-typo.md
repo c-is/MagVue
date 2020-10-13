@@ -44,6 +44,15 @@ titleColour:
   - label: Primary colour
     value: colour-primary
 isVideoButton: true
+share:
+  - facebook:
+    name: facebook
+    iconPath: fb.svg
+    link: https://www.facebook.com/sharer/sharer.php?u=@u&title=@t&description=@d&quote=@q&hashtag=@h
+  - instagram:
+    name: instagram
+    iconPath: insta.svg
+    link: https://www.linkedin.com/sharing/share-offsite/?url=@u
 iconColour:
   - label: Icon colour
     value: colour-icon

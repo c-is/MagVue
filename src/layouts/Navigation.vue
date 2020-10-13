@@ -123,6 +123,11 @@ export default {
           background-color: var(--colour-font-contrast);
         }
 
+        .is-coming-soon & {
+          color: var(--colour-font);
+          background-color: var(--colour-font-contrast);
+        }
+
         .is-post-industrial & {
           color: var(--colour-font);
           background-color: var(--colour-font-contrast);
@@ -140,6 +145,11 @@ export default {
         .is-home & {
           color: var(--colour-font-contrast);
           background-color: var(--colour-primary);
+        }
+
+        .is-coming-soon & {
+          color: var(--colour-font);
+          background-color: var(--colour-font-contrast);
         }
 
         .is-contact & {

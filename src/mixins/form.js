@@ -37,15 +37,6 @@ export default {
     this.errorEl = new Progress(this.$refs.svgCross.$el);
   },
   methods: {
-    // setInitialPathStroke() {
-    //   this.path = document.querySelector('.js-footer-cover .svg-line');
-    //   if (this.path) {
-    //     const length = this.path.getTotalLength();
-    //     this.path.style.strokeDasharray = `${length} ${length}`;
-    //     this.path.style.strokeDashoffset = length;
-    //   }
-    // },
-
     setError(message, el) {
       this.errorMessage = message;
 

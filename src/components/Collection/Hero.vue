@@ -2,6 +2,7 @@
   <section
     :class="`hero hero--${className} js-section`"
     :data-bgcolour="bgColour"
+    :style="style"
   >
     <div class="hero__title-container">
       <div class="hero__title-inner">
@@ -68,13 +69,19 @@ export default {
   components: { ShapeIndustrial, ShapeVisual, ShapeBlog },
   props: {
     page: Object,
-    title: String,
     className: String,
     bgColour: String,
     type: String,
     categories: Array,
     selected: [String, Number],
     onFilter: Function,
+  },
+  data() {
+    return {
+      style: this.$store.state.status.isMobile ? {
+        height: `${window.innerHeight}px`,
+      } : {},
+    };
   },
 };
 </script>

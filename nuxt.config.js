@@ -105,6 +105,8 @@ export default {
   },
   router: {
     routeNameSplitter: '/',
+    middleware: 'getPage',
+    // linkActiveClass: 'active-link',
   },
   build: {
     transpile: [
@@ -121,9 +123,9 @@ export default {
           //   () => {
           //     const { colours } = theme;
           //     const customProperties = {};
-          //     colours.forEach(colour => (
-          //   { customProperties[`--${colour.key}`] = `${colour.value}`; }
-          // ));
+          //     colours.forEach(colour => {
+          //       customProperties[`--${colour.key}`] = `${colour.value}`;
+          //     });
           //     console.log('custom', customProperties);
           //     return { customProperties };
           //   },

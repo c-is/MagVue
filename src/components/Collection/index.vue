@@ -9,19 +9,15 @@
   >
     <div
       class="drawer js-drawer"
-      :data-target="className"
-      :data-href="drawerHref"
-      :data-type="drawerType"
-      :data-direction="drawerDir"
       data-cursor="arrow"
+      :data-target="type"
     >
-      <div class="drawer__inner js-anim-drawer-inner" />
+      <div class="drawer__inner anim-drawer-inner" />
     </div>
 
     <article class="content content--post post">
       <Hero
         :page="page"
-        :title="defaultTitle"
         :class-name="className"
         :bg-colour="bgColour"
         :type="type"
@@ -145,6 +141,7 @@ export default {
         await gsap.to(this.$refs.list, 0.4, { opacity: 1 });
       }
     },
+
     async handleFilter(type) {
       if (this.$refs.list) {
         await gsap.to(this.$refs.list, 0.4, { opacity: 0 });
@@ -153,6 +150,7 @@ export default {
         await gsap.to(this.$refs.list, 0.4, { opacity: 1 });
       }
     },
+
     getItemStyle(titleColour, background) {
       const styles: Styles = {};
 
@@ -166,6 +164,7 @@ export default {
 
       return styles;
     },
+
     getVideoButtonStyle(iconColour) {
       const styles: Styles = {};
 
@@ -175,6 +174,7 @@ export default {
 
       return styles;
     },
+
     getInnerStyle(circleColour, circleLine) {
       const styles: Styles = {};
 
@@ -499,4 +499,66 @@ html:not(.safari) .post__item-inner:hover .post-image { transform: scale(1.1); }
   &__measure { width: var(--gutter-space); }
 }
 
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 0;
+  height: 100%;
+  will-change: width;
+  color: var(--colour-font-contrast);
+
+  &[data-target=industrial] {
+    right: 0;
+    left: auto;
+  }
+
+  @media (--screen-sm-max) {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 0;
+    margin: auto;
+
+    &::before {
+      display: block;
+    }
+  }
+
+  &__inner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 100%;
+    padding: 0 var(--space-m);
+    background-color: var(--colour-bg-secondary);
+
+    .drawer[data-target=industrial] & {
+      right: auto;
+      left: 0;
+      justify-content: flex-end;
+      background-color: var(--colour-bg);
+    }
+
+    @media (--screen-sm-max) {
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      width: 100%;
+      height: 100vh;
+      padding: 0 var(--content-space-mobile);
+      text-align: center;
+    }
+  }
+}
 </style>

@@ -1,5 +1,9 @@
-import Collection from '../components/Collection/index.vue';
+import { gsap } from 'gsap';
+import Collection from '~/components/Collection/index.vue';
 import mixinGlobal from './global';
+
+const TRANSITION_EASE = 'power3.out';
+const TRANSITION_TIMING = 0.8;
 
 const pagination = {
   getPostsOfPage({
@@ -83,6 +87,7 @@ export default {
     $config,
     query,
     route,
+    page,
   }) {
     // eslint-disable-next-line
     const pageCurrent = parseInt(query.page || '1') || 1;
@@ -96,7 +101,7 @@ export default {
       current: pageCurrent,
     });
 
-    const page = await $content(`page/${route.name}`, { deep: true }).fetch();
+    // const page = await $content(`page/${route.name}`, { deep: true }).fetch();
     const categories = await $content('page/categories')
       // .where({ 'categories.type': { $contains: 'categories' } });
       .fetch();
@@ -111,11 +116,13 @@ export default {
         ? categories.categories.filter(c => c.type === route.name) : [],
     };
   },
+
   data() {
     return {
       categories: [],
       posts: [],
       page: {},
+      // page: {},
       pageCurrent: 1,
       pageCount: 1,
       index: null,
@@ -192,5 +199,81 @@ export default {
     setCategory(selected) {
       this.category = selected;
     },
+  },
+
+  transition(to, from) {
+    return {
+      css: false,
+      mode: 'out-in',
+      async leave(el, done) {
+        if (to.name === 'index') {
+          const OUTER_PADDING = window.innerWidth * 0.0935;
+          const doc = document.documentElement;
+          const drawer = el.querySelector('.js-drawer');
+          const st = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+
+          gsap.set('.anim-drawer-inner', {
+            width: window.innerWidth / 2,
+            padding: OUTER_PADDING,
+          });
+
+          gsap.to(window, {
+            scrollTo: 0,
+            ease: 'circ.inOut',
+            duration: TRANSITION_TIMING,
+          });
+
+          await gsap.to('.content', {
+            y: -20,
+            opacity: 0,
+            ease: 'circ.inOut',
+            delay: st > 0 ? 0.8 : 0,
+            duration: 0.6,
+          });
+
+          // const drawerWidth = (drawer.clientWidth / window.innerWidth) * 100;
+          // console.log({ offsetWidth: drawer.clientWidth, window: window.innerWidth });
+
+          await gsap.to(drawer, {
+            width: '50%',
+            ease: TRANSITION_EASE,
+            delay: 0.2,
+            duration: TRANSITION_TIMING,
+          });
+        } else {
+          await gsap.to(el, {
+            opacity: 0, y: -20, duration: 0.4, ease: 'back',
+          });
+        }
+
+        done();
+      },
+      beforeEnter(el) {
+        if (from.name !== 'index') {
+          gsap.set(el, { opacity: 0 });
+        }
+
+        const content = el.querySelector('.content');
+        if (content) {
+          gsap.set(content, { opacity: 0, y: 20 });
+        }
+      },
+      async enter(el, done) {
+        if (from.name !== 'index') {
+          gsap.to(el, { opacity: 1, duration: 0.4 });
+        }
+
+        const content = el.querySelector('.content');
+
+        if (content) {
+          await gsap.to(content, {
+            opacity: 1, y: 0, duration: 0.4, ease: 'back',
+          });
+          gsap.set(content, { clearProps: 'all' });
+        }
+
+        done();
+      },
+    };
   },
 };

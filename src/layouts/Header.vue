@@ -10,7 +10,7 @@
 
     <nuxtLink
       v-else-if="$store.state.status.isMobile && !$route.name.includes('/slug')"
-      class="logo-mobile"
+      class="logo"
       to="/"
     >
       <LogoMobile />
@@ -42,20 +42,6 @@ export default {
       this.$store.dispatch('status/setStatusMenuOpen', !this.$store.state.status.isMenuOpen);
     },
   },
-  // mounted() {
-  //   console.log(this.$route.path);
-  //   return {
-  //     path: this.$route.path,
-  //   };
-  // },
-  // asyncData({ route, params }) {
-  //   if (process.server) {
-  //     // use route object
-  //     console.log(route.params.slug);
-  //     // directly use params
-  //     console.log(params.slug);
-  //   }
-  // },
 };
 </script>
 
@@ -168,7 +154,7 @@ export default {
     &::before,
     &::after {
       @media (--screen-xs-min) {
-        background-color: var(--colour-primary);
+        background-color: var(--colour-secondary);
       }
     }
   }
@@ -176,17 +162,17 @@ export default {
   &.is-loaded {
     &::before,
     &::after {
-      background-color: var(--colour-primary);
+      background-color: var(--colour-secondary);
 
       @media (--screen-sm-max) {
-        .is-home & { background-color: var(--colour-primary); }
-        .is-contact & { background-color: var(--colour-primary); }
+        .is-home & { background-color: var(--colour-secondary); }
+        .is-contact & { background-color: var(--colour-secondary); }
       }
     }
   }
 }
 
-.logo-mobile {
+.logo {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -199,6 +185,7 @@ export default {
 
   .is-home & { color: var(--colour-font-contrast); }
   .is-contact & { color: var(--colour-font-contrast); }
+  .is-coming-soon & { color: var(--colour-font-contrast); }
   .is-post-industrial & { color: var(--colour-font-contrast); }
   .is-post-visual & { color: var(--colour-primary); }
   .is-load-start & { color: var(--colour-font); }

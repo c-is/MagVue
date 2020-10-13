@@ -25,6 +25,10 @@ export const mutations = {
       newState.posts = { visual, industrial };
     }
   },
+  SET_PAGE(newState, page) {
+    // eslint-disable-next-line
+    newState.page = page;
+  },
 };
 
 export const actions = {
@@ -34,9 +38,13 @@ export const actions = {
   setPostAll({ commit }, data) {
     commit('SET_POST_ALL', data);
   },
+  setPage({ commit }, data) {
+    commit('SET_PAGE', data);
+  }
 };
 
 export const getters = {
   getNavigation: s => () => s.navigation,
   getPostAll: s => () => s.posts,
+  getPage: s => () => s.page,
 };

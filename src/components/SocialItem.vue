@@ -34,7 +34,7 @@ export default {
   computed: {
     componentInstance() {
       const name = this.item.iconPath;
-      return () => import(`../../svgs/social/${name}`);
+      return () => import(`~/svgs/social/${name}`);
     },
   },
 };
@@ -43,7 +43,6 @@ export default {
 <style lang="postcss" scoped>
   .social-item {
     display: inline-block;
-    margin: 0 0.5rem;
     color: var(--colour-font);
     transition: transform 1.2s var(--ease-out-circ);
 

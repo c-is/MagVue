@@ -7,6 +7,13 @@
     "_name": "_6a20bb59"
   },
   {
+    "name": "coming-soon",
+    "path": "/coming-soon",
+    "component": "/Users/yugoy2k/Sites/Magg/mag-dev-ssr/src/pages/coming-soon/index.vue",
+    "chunkName": "pages/coming-soon/index",
+    "_name": "_538d2886"
+  },
+  {
     "name": "contact",
     "path": "/contact",
     "component": "/Users/yugoy2k/Sites/Magg/mag-dev-ssr/src/pages/contact/index.vue",

@@ -69,6 +69,14 @@
                 <IconCart />
               </a>
             </div>
+
+            <Share
+              v-if="page.share"
+              custom-class="share--post"
+              :data="page.share"
+              :title="page.title"
+              :url="url"
+            />
           </div>
         </div>
 
@@ -145,8 +153,9 @@ import mixinGlobal from '~/mixins/global';
 import ImageModal from '~/components/ImageModal.vue';
 import PostIndex from '~/components/PostIndex.vue';
 import NewsLetter from '~/components/NewsLetter.vue';
-import PostScroller from '~/widgets/PostScroller';
 import ProductInfo from '~/components/ProductInfo.vue';
+import Share from '~/components/Share/index.vue';
+import PostScroller from '~/widgets/PostScroller';
 import ArrowBack from '~/svgs/arrow-back.svg';
 import IconCart from '~/svgs/icon-cart.svg';
 
@@ -160,27 +169,30 @@ export default {
     ImageModal,
     PostIndex,
     NewsLetter,
+    Share,
   },
   mixins: [mixinGlobal],
-  async asyncData({ $content, route }) {
+  async asyncData({
+    $content,
+    route,
+    $config,
+    page,
+  }) {
+    const url = `${$config.url}${route.path}`;
     const type = route.name.replace('/slug', '');
-    const page = await $content(route.path.replace('/', '')).fetch();
 
     const [prev, next] = await $content(type)
       .only(['title', 'slug', 'path'])
       // .sortBy('createdAt', 'asc')
-      .surround(page.slug)
+      .surround(route.params.slug)
       .fetch();
-
-    // console.log({
-    //   next, prev, page, type,
-    // });
 
     return {
       page,
       prev,
       next,
       type,
+      url,
     };
   },
 
@@ -434,6 +446,8 @@ export default {
 
   &__text {
     position: relative;
+    display: flex;
+    flex-direction: column;
     height: calc(100% - var(--header-height));
     padding: 0 0 var(--header-height);
     margin-top: calc(var(--header-height) + 3.5vh);
@@ -523,7 +537,7 @@ export default {
       width: 100%;
       height: 8vh;
       content: '';
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 66.67%);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, var(--colour-bg) 66.67%);
       transition: opacity 0.4s;
     }
   }
@@ -609,4 +623,12 @@ export default {
   }
 }
 
+.share--post {
+  margin-top: auto;
+
+  @media (--screen-sm-max) {
+    position: relative;
+    bottom: 0;
+  }
+}
 </style>

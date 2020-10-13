@@ -65,7 +65,8 @@
         <div class="form__row form__row--button">
           <div
             ref="progressor"
-            class="form__progress js-button-standard"
+            class="form__progress"
+            data-cursor="standard"
             :class="{
               'is-loading': isLoading,
               'is-success': isSuccess,
@@ -74,7 +75,7 @@
           >
             <button
               v-tilt
-              class="form__submit js-submit button button--link"
+              class="form__submit button button--link"
               :class="{ 'is-active': name && email }"
               :data-colour="name && email ? 'primary' : 'disabled'"
             >
@@ -111,7 +112,7 @@
 </template>
 
 <script>
-import mixinForm from '../../mixins/form';
+import mixinForm from '~/mixins/form';
 
 const WAIT_INTERVAL = 620;
 

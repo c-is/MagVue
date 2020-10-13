@@ -46,11 +46,11 @@
         <ul class="post-index__list">
           <li v-for="(post, index) in posts" :key="post.path">
             <nuxtLink
-              class="u-decoration-link"
               :to="post.path"
+              :data-aos-delay="index * 100"
+              class="u-decoration-link"
               data-cursor="small"
               data-aos="fade-up"
-              :data-aos-delay="index * 100"
               data-type="single"
             >
               {{ post.title }}
@@ -94,10 +94,10 @@
 
 <script>
 import { gsap } from 'gsap';
-import ArrowSmallUp from '../svgs/arrow-small-up.svg';
-import ArrowSmallLeft from '../svgs/arrow-small-left.svg';
-import ArrowSmallRight from '../svgs/arrow-small-right.svg';
-import ArrowNextLong from '../svgs/arrow-next-long.svg';
+import ArrowSmallUp from '~/svgs/arrow-small-up.svg';
+import ArrowSmallLeft from '~/svgs/arrow-small-left.svg';
+import ArrowSmallRight from '~/svgs/arrow-small-right.svg';
+import ArrowNextLong from '~/svgs/arrow-next-long.svg';
 
 export default {
   components: {
@@ -116,7 +116,7 @@ export default {
   methods: {
     handleScroll(event) {
       event.preventDefault();
-      gsap.to(window, 1.6, { scrollTo: 0, ease: 'circ.easeInOut' });
+      gsap.to(window, 1.4, { scrollTo: 0, ease: 'circ.inOut' });
     },
   },
 };

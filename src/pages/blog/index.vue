@@ -8,7 +8,6 @@
     <article class="content content--post post">
       <Hero
         :page="page"
-        title="Blog"
         class-name="blog"
         bg-colour="#fff"
         type="blog"
@@ -61,7 +60,8 @@
                   </div>
                   <nuxtLink
                     v-tilt
-                    class="item__button js-button-standard"
+                    class="item__button"
+                    data-cursor="standard"
                     :to="item.path"
                     :style="getButtonStyle(item.buttonTextColour, item.buttonColour)"
                   >
@@ -117,8 +117,8 @@ export default {
     // $config,
     query,
     route,
+    page,
   }) {
-    const page = await $content('page/blog').fetch();
     // eslint-disable-next-line
     const pageCurrent = parseInt(query.page || '1') || 1;
     const category = query.category || 0;
@@ -159,7 +159,6 @@ export default {
     const categories = await $content('page/blog-categories').fetch();
 
     return {
-      page,
       index,
       posts,
       pageCurrent,
@@ -169,12 +168,13 @@ export default {
       categories: categories.categories,
       category,
       year,
+      page,
     };
   },
 
   data() {
     return {
-      page: null,
+      page: {},
       pageCount: 1,
       pageCurrent: 1,
       category: 0,
@@ -385,9 +385,10 @@ export default {
 
   &__button {
     display: inline-flex;
+    flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    width: 67px;
+    width: 70px;
     height: 70px;
     margin-top: 2rem;
     border: none;

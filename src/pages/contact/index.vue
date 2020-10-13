@@ -127,8 +127,8 @@ export default {
     ArrowDown,
   },
   mixins: [mixinGlobal],
-  async asyncData({ $content }) {
-    const page = await $content('page/contact').fetch();
+  asyncData({ page }) {
+    // const page = await $content('page/contact').fetch();
     return {
       page,
     };

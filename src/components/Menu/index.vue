@@ -255,13 +255,17 @@ export default Vue.extend({
     }
   }
 
+  a {
+    color: var(--colour-secondary);
+  }
+
   &__overlay {
     position: fixed;
     top: 0;
     right: 0;
     width: 0;
     height: 100%;
-    background-color: var(--colour-bg);
+    background-color: var(--colour-primary);
   }
 
   &__container {
@@ -314,7 +318,7 @@ export default Vue.extend({
 
   &__title {
     font-size: 1rem;
-    color: var(--colour-primary);
+    color: var(--colour-secondary);
 
     @media (--screen-sm-max) {
       margin: 0;
@@ -331,7 +335,7 @@ export default Vue.extend({
     position: absolute;
     top: 50%;
     left: 50%;
-    color: var(--colour-primary);
+    color: var(--colour-secondary);
     opacity: 0;
     transition: 0.3s opacity ease;
     transform: translate(-50%, -50%);
@@ -435,14 +439,14 @@ export default Vue.extend({
       height: 1px;
       margin: auto;
       content: '';
-      background-color: var(--colour-primary);
+      background-color: var(--colour-secondary);
     }
   }
 
   .scrollbar-thumb {
     height: 6px;
     background: var(--colour-bg);
-    border: 1px solid var(--colour-primary);
+    border: 1px solid var(--colour-secondary);
   }
 
   .scrollbar-track-x { opacity: 0; }

@@ -1,4 +1,4 @@
-import { browserDetect } from '../utils/globals';
+import { browserDetect } from '~/utils/globals';
 
 const defaultStatus = {
   isLoaded: false,

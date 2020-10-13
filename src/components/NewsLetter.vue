@@ -1,5 +1,5 @@
 <template>
-  <div class="newsletter">
+  <div class="newsletter" :class="subClass">
     <div class="newsletter__content">
       <div class="newsletter__inner">
         <div class="newsletter__text">
@@ -58,7 +58,7 @@
                 'is-error': isError,
               }"
             >
-              <button v-tilt class="form__submit js-submit button button--link">
+              <button v-tilt class="form__submit button button--link">
                 <span class="button__text">Submit</span>
               </button>
 
@@ -92,6 +92,9 @@ export default {
     NewsLetterBg,
   },
   mixins: [mixinForm],
+  props: {
+    subClass: String,
+  },
   data() {
     return {
       name: '',
@@ -170,6 +173,10 @@ export default {
     margin: auto;
     color: var(--colour-primary);
     text-align: center;
+
+    .is-post-visual & {
+      color: var(--colour-secondary);
+    }
   }
 
   &__content {
@@ -178,6 +185,10 @@ export default {
     height: 443px;
     overflow: hidden;
     background-color: var(--colour-secondary);
+
+    .is-post-visual & {
+      background-color: var(--colour-primary);
+    }
 
     @media (--screen-sm-max) {
       height: auto;
@@ -202,6 +213,10 @@ export default {
     padding-bottom: 4rem;
     color: var(--colour-primary);
     text-align: center;
+
+    .is-post-visual & {
+      color: var(--colour-secondary);
+    }
 
     @media (--screen-sm-max) {
       width: 100%;
@@ -249,6 +264,11 @@ export default {
   &__submit {
     color: var(--colour-secondary);
     background-color: var(--colour-primary);
+
+    .is-post-visual & {
+      color: var(--colour-primary);
+      background-color: var(--colour-secondary);
+    }
   }
 
   &__row {
@@ -290,12 +310,35 @@ export default {
       color: var(--colour-primary);
       opacity: 0.8;
     }
+
+    .is-post-visual & {
+      &::-moz-placeholder {
+        color: var(--colour-secondary);
+      }
+
+      &::-webkit-input-placeholder {
+        color: var(--colour-secondary);
+      }
+
+      &:-ms-input-placeholder {
+        color: var(--colour-secondary);
+      }
+
+      &:-moz-placeholder {
+        color: var(--colour-secondary);
+      }
+    }
   }
 
   input[type="text"],
   input[type="email"] {
     color: var(--colour-primary);
     border-color: var(--colour-primary);
+
+    .is-post-visual & {
+      color: var(--colour-secondary);
+      border-color: var(--colour-secondary);
+    }
   }
 }
 

@@ -39,25 +39,12 @@
         <div class="blog-post__column is-last" />
       </section>
 
-      <div class="social">
-        <ul v-if="page.share" class="social__list">
-          <li
-            v-for="(item, index) in page.share"
-            :key="item.name"
-            class="social__item"
-            data-aos="fade-up"
-            :data-aos-delay="100 + (100 * index)"
-            data-aos-duration="300"
-          >
-            <SocialItem
-              v-if="item"
-              :item="item"
-              :title="page.title"
-              :url="url"
-            />
-          </li>
-        </ul>
-      </div>
+      <Share
+        :data="page.share"
+        :title="page.title"
+        :url="url"
+        custom-class="share--blog"
+      />
 
       <NewsLetter />
     </article>
@@ -68,17 +55,16 @@
 import ArrowBack from '~/svgs/arrow-back.svg';
 import mixinGlobal from '~/mixins/global';
 import NewsLetter from '~/components/NewsLetter.vue';
-import SocialItem from './-SocialItem.vue';
+import Share from '~/components/Share/index.vue';
 
 export default {
   components: {
     ArrowBack,
     NewsLetter,
-    SocialItem,
+    Share,
   },
   mixins: [mixinGlobal],
-  async asyncData({ $content, route, $config }) {
-    const page = await $content(`blog/${route.params.slug}`).fetch();
+  asyncData({ route, $config, page }) {
     const url = `${$config.url}${route.path}`;
 
     // const [prev, next] = await $content(type)
@@ -92,8 +78,8 @@ export default {
     // // });
 
     return {
-      page,
       url,
+      page,
       // prev,
       // next,
       // type,
@@ -102,7 +88,6 @@ export default {
 
   data() {
     return {
-      page: null,
       url: '',
       // url: window.location.href,
     };
@@ -191,20 +176,7 @@ export default {
   }
 }
 
-.social {
+.share--blog {
   margin-bottom: var(--space-l);
-
-  @media (--screen-sm-max) {
-    position: absolute;
-    bottom: 5rem;
-    left: 0;
-    width: 100%;
-  }
-
-  &__list {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 }
 </style>

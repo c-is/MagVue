@@ -4,6 +4,7 @@ postType: industrial
 permalink: /industrial/
 pageid: industrial
 title: Industrial
+comingSoon: true
 keywords: >-
   3D modeling, 3D design, 3D CGI, CGI, 3D character, 3D studio, 3D, 3D Tokyo,
   3D, Character design, Character rigging, Rigging, Rig, Topology design,
@@ -20,9 +21,8 @@ keywords: >-
   Viscous, Grains, Grain simulation, Tokyo, Jigen, Jigen Design, Jigen Studio,
   Jigen Studio Tokyo, Jigen Design Tokyo, Houdini artist, Houdini FX, Houdini,
   Houdini Generalist, Houdini Designer, Arnold Render, Octane Render, Octane,
-  Keyshot Render, Cinema4D, 東京, 東京デザイナー, 東京３D , 次元, 次元デザイン, 次元３D, 
+  Keyshot Render, Cinema4D, 東京, 東京デザイナー, 東京３D , 次元, 次元デザイン, 次元３D,
 shopItem:
   description: ''
   thumbnail: ''
 ---
-
