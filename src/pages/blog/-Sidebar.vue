@@ -108,15 +108,35 @@
         </blockquote>
       </div>
     </div>
+
+    <div class="sidebar__item">
+      <h2>Other media</h2>
+      <ul v-if="$config.accounts" class="sidebar__social">
+        <li
+          v-for="(item, index) in $config.accounts"
+          :key="item.name"
+          class="social__item"
+          data-aos="fade-up"
+          :data-aos-delay="100 + (100 * index)"
+          data-aos-duration="300"
+        >
+          <SocialItem v-if="item" :item="item" />
+        </li>
+      </ul>
+    </div>
   </section>
 </template>
 
-<script>
+<script lang="ts">
 import mixinForm from '~/mixins/form';
+import SocialItem from './-SocialItem.vue';
 
 const WAIT_INTERVAL = 620;
 
 export default {
+  components: {
+    SocialItem,
+  },
   mixins: [mixinForm],
   props: {
     onSearch: Function,
@@ -126,7 +146,7 @@ export default {
       name: '',
       email: '',
       search: '',
-      timer: null,
+      timer: null as ReturnType<typeof setTimeout> | null,
     };
   },
   mounted() {
@@ -146,7 +166,7 @@ export default {
       });
   },
   methods: {
-    async submitForm(event) {
+    async submitForm(event: MouseEvent) {
       event.preventDefault();
 
       const modifiedName = this.name.split(' ');
@@ -178,9 +198,11 @@ export default {
       this.email = '';
     },
 
-    handleSearch(event) {
+    handleSearch(event: any) {
       const handleSearch = () => this.onSearch('search', event.target.value);
-      clearTimeout(this.timer);
+      if (this.timer) {
+        clearTimeout(this.timer);
+      }
       this.timer = setTimeout(handleSearch, WAIT_INTERVAL);
     },
   },
@@ -201,6 +223,18 @@ export default {
     max-width: 350px;
     margin-bottom: var(--space-s);
   }
+
+  &__social {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 355px;
+    margin: auto;
+
+    @media (--screen-sm-max) {
+      width: 80%;
+    }
+  }
 }
 
 .form {
@@ -212,6 +246,7 @@ export default {
   textarea {
     color: var(--colour-font);
     border: 2px solid var(--colour-bg-secondary);
+    &:hover { background-color: #f4f4f4; }
   }
 
   .checkmark {

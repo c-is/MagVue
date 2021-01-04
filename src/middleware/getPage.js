@@ -6,8 +6,6 @@ export default async context => {
     from,
   } = context;
 
-  // console.log({ route, from });
-
   if (route.name === 'index' || route.name === 'coming-soon' || (from && from.path === route.path)) {
     return {};
   }
@@ -18,6 +16,8 @@ export default async context => {
 
   const page = await $content(path).fetch();
   context.page = page;
+
+  console.log({ page, path });
 
   if (page && page.comingSoon) {
     return redirect(`/coming-soon?type=${route.name}`);

@@ -82,9 +82,10 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { gsap } from 'gsap';
 import mixinForm from '~/mixins/form';
+// @ts-ignore
 import NewsLetterBg from '~/svgs/newsletter.svg';
 
 export default {
@@ -103,9 +104,10 @@ export default {
   },
   mounted() {
     const { svg } = this.$refs;
-
+    // @ts-ignore
     if (svg && svg.$el) {
-      const paths = svg.$el.querySelectorAll('path');
+      // @ts-ignore
+      const paths = svg.$el.querySelectorAll('path') as SVGPathElement[];
 
       if (paths) {
         paths.forEach(path => {
@@ -119,7 +121,7 @@ export default {
     }
   },
   methods: {
-    async submitForm(event) {
+    async submitForm(event: MouseEvent) {
       event.preventDefault();
 
       const modifiedName = this.name.split(' ');
@@ -338,6 +340,10 @@ export default {
     .is-post-visual & {
       color: var(--colour-secondary);
       border-color: var(--colour-secondary);
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.12);
     }
   }
 }

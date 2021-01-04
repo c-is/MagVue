@@ -68,7 +68,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   props: {
     categories: Array,
@@ -135,11 +135,11 @@ export default {
       ],
     ];
 
-    const modifiedCategories = [];
-    let categoryGroup = [];
+    const modifiedCategories: { id: string; name: string }[][] = [];
+    let categoryGroup: { id: string; name: string }[] = [];
 
     if (this.categories) {
-      const categoryWithDefault = [{ id: '0', name: 'All' }, ...this.categories];
+      const categoryWithDefault = [{ id: '0', name: 'All' }, ...this.categories] as { id: string; name: string }[];
 
       categoryWithDefault.forEach((category, index) => {
         categoryGroup.push(category);
@@ -156,15 +156,9 @@ export default {
       });
     }
 
-    const time = this.years ? this.years.map(y => ({
-      year: y,
-      months,
-    })) : null;
+    const time = this.years ? this.years.map(y => ({ year: y, months })) : null;
 
-    return {
-      time,
-      modifiedCategories,
-    };
+    return { time, modifiedCategories };
   },
 };
 </script>

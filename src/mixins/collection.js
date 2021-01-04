@@ -101,7 +101,6 @@ export default {
       current: pageCurrent,
     });
 
-    // const page = await $content(`page/${route.name}`, { deep: true }).fetch();
     const categories = await $content('page/categories')
       // .where({ 'categories.type': { $contains: 'categories' } });
       .fetch();
@@ -122,7 +121,6 @@ export default {
       categories: [],
       posts: [],
       page: {},
-      // page: {},
       pageCurrent: 1,
       pageCount: 1,
       index: null,

@@ -1,20 +1,28 @@
-import { $content as ContentType } from '@nuxt/content';
-
-interface GetNumberOfPages {
-  $content: typeof ContentType;
+interface GetPosts {
+  $content: any;
   category?: string | null;
-  size: number;
-  year?: string;
+  size?: number;
+  current: number;
+  count: any;
+  year?: number | string;
   search?: string;
 }
 
-interface GetPostsOfPage extends GetNumberOfPages {
+interface GetPostsOfPage {
+  $content: any;
+  category?: string | number | null;
+  size?: number;
   page: number;
+  year?: number | string | null;
+  search?: string;
 }
 
-interface GetPosts extends GetNumberOfPages {
-  current: number;
-  count?: number;
+interface GetNumberOfPage {
+  $content: any;
+  category?: string | null;
+  size?: number;
+  year?: number | string;
+  search?: string;
 }
 
 const POSTS_PER_PAGE = 5;
@@ -33,14 +41,12 @@ const pagination = {
 
     if (category && category !== '0') {
       query = { 'type.value': { $contains: category } };
-      // content = content.where({ 'type.value': { $contains: category } });
     }
 
     if (year) {
       const start = new Date().setFullYear(Number(year), 1, 1);
       const end = new Date().setFullYear(Number(year), 11, 31);
       query = { ...query, createdAt: { $between: [start.valueOf(), end.valueOf()] } };
-      // content = content.where({ createdAt: { $between: [start.valueOf(), end.valueOf()] } });
     }
 
     if (search) {
@@ -61,7 +67,7 @@ const pagination = {
     year,
     search,
     size = POSTS_PER_PAGE,
-  }: GetNumberOfPages) {
+  }: GetNumberOfPage) {
     let query = {};
     let content = $content('blog');
 
@@ -77,7 +83,6 @@ const pagination = {
       const start = new Date().setFullYear(Number(year), 1, 1);
       const end = new Date().setFullYear(Number(year), 11, 31);
       query = { ...query, createdAt: { $between: [start.valueOf(), end.valueOf()] } };
-      // content = content.where({ createdAt: { $between: [start.valueOf(), end.valueOf()] } });
     }
 
     return Math.ceil((await content.where(query).only([]).fetch()).length / size);
@@ -85,7 +90,9 @@ const pagination = {
 };
 
 async function getPosts({
+  // @ts-ignore
   $content,
+  // @ts-ignore
   category,
   size = POSTS_PER_PAGE,
   current,

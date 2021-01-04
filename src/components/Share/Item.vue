@@ -15,6 +15,11 @@ export default {
     item: Object,
     url: String,
     title: String,
+    twitterUser: String,
+    description: String,
+    quote: String,
+    encodedHashtags: String,
+    media: String,
   },
 
   data() {

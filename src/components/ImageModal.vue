@@ -49,7 +49,7 @@ export default {
   },
   watch: {
     index() {
-      this.current = this.gallery[this.index];
+      this.current = this.gallery[this.index] as string;
     },
   },
   mounted() {
@@ -80,7 +80,7 @@ export default {
 
       this.close();
     },
-    handleNavigation(index) {
+    handleNavigation(index: number) {
       if (this.gallery[index]) {
         this.index = index;
       }

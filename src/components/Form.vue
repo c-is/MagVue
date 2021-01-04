@@ -75,7 +75,7 @@
   </form>
 </template>
 
-<script>
+<script lang="ts">
 import mixinForm from '~/mixins/form';
 
 export default {
@@ -88,7 +88,7 @@ export default {
     };
   },
   methods: {
-    async submitForm(event) {
+    async submitForm(event: MouseEvent) {
       event.preventDefault();
 
       const request = {

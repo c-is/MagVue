@@ -51,7 +51,8 @@
   </main>
 </template>
 
-<script>
+<script lang="ts">
+// @ts-ignore
 import ArrowBack from '~/svgs/arrow-back.svg';
 import mixinGlobal from '~/mixins/global';
 import NewsLetter from '~/components/NewsLetter.vue';
@@ -64,6 +65,7 @@ export default {
     Share,
   },
   mixins: [mixinGlobal],
+  // @ts-ignore
   asyncData({ route, $config, page }) {
     const url = `${$config.url}${route.path}`;
 
@@ -98,7 +100,7 @@ export default {
   },
 
   methods: {
-    formatDate(date) {
+    formatDate(date: string) {
       const options = { year: 'numeric', month: 'long', day: 'numeric' };
       return new Date(date).toLocaleDateString('en', options);
     },

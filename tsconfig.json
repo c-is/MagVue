@@ -37,6 +37,7 @@
   },
   "include": [
     "src/**/*.ts",
+    "src/**/*.svg",
     // "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.vue"

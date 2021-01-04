@@ -88,7 +88,7 @@
   </main>
 </template>
 
-<script>
+<script lang="ts">
 import { gsap } from 'gsap';
 import mixinGlobal from '~/mixins/global';
 import Pagination from '~/components/Pagination.vue';
@@ -98,6 +98,12 @@ import BlogFilter from './-Filter.vue';
 import Sidebar from './-Sidebar.vue';
 // eslint-disable-next-line
 import { getPosts, pagination } from './-post';
+
+interface Query {
+  category: string;
+  year?: string;
+  page?: string;
+}
 
 const POSTS_PER_PAGE = 5;
 
@@ -119,11 +125,14 @@ export default {
     route,
     page,
   }) {
+    console.log({ page });
+    // @ts-ignore
+    const typedQuery = query as Query;
     // eslint-disable-next-line
-    const pageCurrent = parseInt(query.page || '1') || 1;
-    const category = query.category || 0;
-    const year = query.year || null;
-    const search = query.year || '';
+    const pageCurrent = parseInt(typedQuery.page || '1') || 1;
+    const category = typedQuery.category || '0' as string;
+    const year = typedQuery.year || undefined;
+    const search = typedQuery.year || '';
     const instance = await $content('blog').only(['createdAt']).fetch();
 
     const count = category
@@ -135,17 +144,17 @@ export default {
       ).length / POSTS_PER_PAGE)
       : Math.ceil((instance).length / POSTS_PER_PAGE);
 
-    const years = [];
+    const years: string[] = [];
 
     if (instance) {
-      instance.forEach(post => {
+      instance.forEach((post: any) => {
         const fullYear = new Date(post.createdAt).getFullYear();
         const match = years.find(y => y === String(fullYear));
         if (!match) years.push(String(fullYear));
       });
     }
 
-    const { pageCount, posts, index } = await getPosts({
+    const { pageCount, posts } = await getPosts({
       $content,
       category,
       year,
@@ -159,7 +168,7 @@ export default {
     const categories = await $content('page/blog-categories').fetch();
 
     return {
-      index,
+      // index,
       posts,
       pageCurrent,
       pageCount,
@@ -182,6 +191,7 @@ export default {
       search: '',
       year: null,
       isLoading: false,
+      posts: null,
     };
   },
 
@@ -229,7 +239,7 @@ export default {
   },
 
   methods: {
-    async handlePaginate(index) {
+    async handlePaginate(index: number) {
       if (this.$refs.list) {
         await gsap.to(this.$refs.list, 0.4, { opacity: 0 });
         this.paginate(index);
@@ -238,7 +248,7 @@ export default {
       }
     },
 
-    async handleFilter(key, selected) {
+    async handleFilter(key: string, selected: number) {
       if (this.$refs.list) {
         await gsap.to(this.$refs.list, 0.4, { opacity: 0 });
         this.setFilter(key, selected);
@@ -276,16 +286,16 @@ export default {
       this.isLoading = false;
     },
 
-    paginate(page) {
+    paginate(page: string | number) {
       this.pageCurrent = Number(page);
     },
 
-    setFilter(key, selected) {
+    setFilter(key: string, selected: number) {
       this[key] = selected;
     },
 
     getItemStyle(colour, background) {
-      const styles = {};
+      const styles: { color?: string; backgroundColor?: string } = {};
 
       if (colour) {
         styles.color = `var(--${colour[0].value})`;
@@ -299,7 +309,7 @@ export default {
     },
 
     getButtonStyle(colour, background) {
-      const styles = {};
+      const styles: { color?: string; backgroundColor?: string } = {};
 
       if (colour) {
         styles.color = `var(--${colour[0].value})`;
@@ -312,7 +322,7 @@ export default {
       return styles;
     },
 
-    formatDate(date) {
+    formatDate(date: string) {
       const options = { year: 'numeric', month: 'long', day: 'numeric' };
       return new Date(date).toLocaleDateString('en', options);
     },
@@ -384,6 +394,7 @@ export default {
   }
 
   &__button {
+    z-index: 2;
     display: inline-flex;
     flex-shrink: 0;
     align-items: center;
@@ -394,6 +405,25 @@ export default {
     border: none;
     border-radius: 50%;
     outline: none;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      content: '';
+      background-color: inherit;
+      border-radius: 50%;
+      transition: transform 0.4s;
+    }
+
+    &:hover {
+      &::before {
+        transform: scale(1.125);
+      }
+    }
   }
 
   &__info {

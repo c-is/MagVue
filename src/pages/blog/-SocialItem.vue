@@ -1,6 +1,6 @@
 <template>
   <a
-    :href="link"
+    :href="item.link"
     target="_blank"
     class="social-item"
     data-cursor="small"
@@ -10,36 +10,24 @@
 </template>
 
 <script>
+// import { defineAsyncComponent } from 'vue';
+
 export default {
+  // components: {
+  //   ProductInfo,
+  //   ShapeContact,
+  //   ArrowDown,
+  //   ProgressCircle,
+  //   Check,
+  //   Cross,
+  // },
   props: {
     item: Object,
-    url: String,
-    title: String,
-    twitterUser: String,
-    description: String,
-    quote: String,
-    encodedHashtags: String,
-    media: String,
-  },
-
-  data() {
-    const link = this.item.link
-      .replace(/@tu/g, `&via=${encodeURIComponent(this.twitterUser)}`)
-      .replace(/@u/g, encodeURIComponent(this.url))
-      .replace(/@t/g, encodeURIComponent(this.title))
-      .replace(/@d/g, encodeURIComponent(this.description))
-      .replace(/@q/g, encodeURIComponent(this.quote))
-      .replace(/@h/g, this.encodedHashtags)
-      .replace(/@m/g, encodeURIComponent(this.media));
-
-    return {
-      link,
-    };
   },
   computed: {
     componentInstance() {
       const name = this.item.iconPath;
-      return () => import(`~/svgs/social/${name}`);
+      return () => import(`../../svgs/social/${name}`);
     },
   },
 };

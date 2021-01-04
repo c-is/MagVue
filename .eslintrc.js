@@ -47,6 +47,7 @@ module.exports = {
     'vue/require-default-prop': 0,
     'space-before-function-paren': 0,
     curly: 0,
+    'import/prefer-default-export': 0,
     'import/extensions': ['error', 'always', {
       js: 'never',
       mjs: 'never',

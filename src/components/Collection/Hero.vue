@@ -1,5 +1,6 @@
 <template>
   <section
+    v-if="page"
     :class="`hero hero--${className} js-section`"
     :data-bgcolour="bgColour"
     :style="style"
